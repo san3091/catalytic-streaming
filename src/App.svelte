@@ -1,30 +1,23 @@
 <script>
-	export let name;
+	import { onMount } from 'svelte'
+	import queryString from 'query-string'
+	
+	// const CLIENT_ID = xxx
+	// const CLIENT_SECRET = xxx
+	const redirectURL = 'https://930b9287.ngrok.io'
+	const patreonOAuthLink = `https://www.patreon.com/oauth2/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${redirectURL}`
+
+	onMount(async () => {
+		const oauthGrantCode = queryString.parse(window.location.search).code
+		const url = `https://www.patreon.com/api/oauth2/tokencode=${oauthGrantCode}&grant_type=authorization_code&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=${redirectURL}`
+
+		console.log(oauthGrantCode)
+	})
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<a href={patreonOAuthLink}>login with patreon!</a>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
