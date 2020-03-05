@@ -2,7 +2,6 @@
   import { onMount } from 'svelte'
   import Carousel from './Carousel/Carousel.svelte'
   import SoundCloudPlayer from './SoundCloudPlayer/SoundCloudPlayer.svelte'
-  import AlbumInfo from './AlbumInfo/AlbumInfo.svelte'
 
   const albumURLs = [
     'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
@@ -43,12 +42,17 @@
 
   const loadAlbumData = (index=0) => {
     const maxIndex = albumURLs.length - 1
+    const nextIndex = index + 1
     SC.oEmbed(albumURLs[index], {})
-      .then((newAlbum) => {
-        albums = [...albums, newAlbum]
-        const nextIndex = index + 1
-        if (nextIndex <= maxIndex) { loadAlbumData(index + 1) }
-      })
+    .then((newAlbum) => {
+      newAlbum.index = index
+      albums = [...albums, newAlbum]
+      if (nextIndex <= maxIndex) { loadAlbumData(nextIndex) }
+    })
+  }
+
+  const selectAlbum = (albumIndex) => {
+    selectedAlbumURL = albumURLs[albumIndex]
   }
 
   onMount(() => {
@@ -57,16 +61,9 @@
 </script>
 
 <main>
-  <Carousel albums={albums} />
-  <div class='current-album'>
-    <SoundCloudPlayer selectedAlbumURL={selectedAlbumURL} />
-    <AlbumInfo />
-  </div>
+  <Carousel albums={albums} selectAlbum={selectAlbum} />
+  <SoundCloudPlayer selectedAlbumURL={selectedAlbumURL} />
 </main>
 
 <style>
-  .current-album {
-    display: flex;
-    flex-direction: row;
-  }
 </style>

@@ -1,5 +1,7 @@
 <script>
   export let albums
+  export let selectAlbum
+
   let groupedAlbums = []
   let currentGroupIndex = 0
   
@@ -38,7 +40,7 @@
   <div class='album-carousel'>
     <button on:click={previousGroup}>left</button>
     {#each groupedAlbums[currentGroupIndex] as album}
-      <div class='carousel-item'>
+      <div class='carousel-item' on:click={ selectAlbum(album.index) } >
         <img src={album.thumbnail_url} />
         <div class='album-info'>
           <h5>{album.title}</h5>
