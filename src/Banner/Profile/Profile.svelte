@@ -1,0 +1,10 @@
+<script>
+</script>
+
+<main>
+	<h1>Profile</h1>
+</main>
+
+<style>
+
+</style>
