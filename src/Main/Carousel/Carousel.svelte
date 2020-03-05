@@ -9,7 +9,7 @@
     let groups = [[]]
     albums.forEach((album, index) => {
       const lastGroup = groups[groups.length - 1]
-      if (lastGroup.length < 8) {
+      if (lastGroup.length < 9) {
         lastGroup.push(album)
       } else {
         groups.push([album])
@@ -41,11 +41,13 @@
     <button on:click={previousGroup}>left</button>
     {#each groupedAlbums[currentGroupIndex] as album}
       <div class='carousel-item' on:click={ selectAlbum(album.index) } >
-        <img src={album.thumbnail_url} />
-        <div class='album-info'>
-          <h5>{album.title}</h5>
-          <h6>{album.author_name}</h6>
-        </div>
+        {#if !album.loading}
+          <img src={album.thumbnail_url} />
+          <div class='album-info'>
+            <h5>{album.title}</h5>
+            <h6>{album.author_name}</h6>
+          </div>
+        {/if}
       </div>
     {/each}
     <button on:click={nextGroup}>right</button>
@@ -59,7 +61,7 @@
     align-items: center;
     justify-content: space-between;
     height: 250px;
-    background-color: yellowgreen;
+    background-color: lightgray;
   }
 
   .carousel-item {
@@ -68,7 +70,8 @@
     align-items: flex-start;
     height: 210px;
     width: 150px;
-    background-color: aqua;
+    background-color: white;
+    border-radius: 5px;
     margin: 10px;
     padding: 10px;
   }

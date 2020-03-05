@@ -41,13 +41,13 @@
   let albums = []
 
   const loadAlbumData = (index=0) => {
-    const maxIndex = albumURLs.length - 1
-    const nextIndex = index + 1
-    SC.oEmbed(albumURLs[index], {})
-    .then((newAlbum) => {
-      newAlbum.index = index
-      albums = [...albums, newAlbum]
-      if (nextIndex <= maxIndex) { loadAlbumData(nextIndex) }
+    albumURLs.forEach((url, index) => {
+      albums.push({ loading: true })
+      SC.oEmbed(albumURLs[index], {})
+      .then((newAlbum) => {
+        newAlbum.index = index
+        albums[index] = newAlbum
+      })
     })
   }
 

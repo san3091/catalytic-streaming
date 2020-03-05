@@ -10,7 +10,6 @@
       element: document.getElementById('sound-cloud')
     }).then((album) => {
       albumInfo = album
-      console.log(album)
     })
   }
 
