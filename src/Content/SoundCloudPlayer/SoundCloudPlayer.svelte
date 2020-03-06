@@ -21,7 +21,7 @@
 </script>
 
 <div class='current-album'>
-  <div id='sound-cloud'>something</div>
+  <div id='sound-cloud'></div>
   <AlbumInfo albumInfo={albumInfo}/>
 </div>
 

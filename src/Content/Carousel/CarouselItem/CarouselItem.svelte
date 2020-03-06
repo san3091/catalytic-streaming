@@ -1,17 +1,19 @@
 <script>
+  import { fade } from 'svelte/transition'
+
   export let album
   export let selectAlbum
 </script>
 
-<div class='carousel-item' on:click={ selectAlbum(album.index) } >
   {#if !album.loading}
-    <img src={album.thumbnail_url} />
-    <div class='album-info'>
-      <h5>{album.title}</h5>
-      <h6>{album.author_name}</h6>
+    <div transition:fade class='carousel-item' on:click={ selectAlbum(album.index) } >
+      <img src={album.thumbnail_url} />
+      <div class='album-info'>
+        <h5>{album.title}</h5>
+        <h6>{album.author_name}</h6>
+      </div>
     </div>
   {/if}
-</div>
 
 <style>
   .carousel-item {
@@ -24,6 +26,7 @@
     margin: 10px;
     padding: 10px;
     cursor: pointer;
+    box-shadow: 1px 1px 0 black;
   }
   
   .album-info {
