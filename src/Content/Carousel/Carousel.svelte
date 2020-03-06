@@ -60,8 +60,8 @@
   .album-carousel {
     position: relative;
     display: flex;
-    background-color: lightgray;
     overflow: hidden;
+    margin-bottom: 10px;
   }
 
   .carousel-items {
@@ -71,6 +71,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    background-color: aliceblue;
     right: var(--carousel-offset);
   }
   

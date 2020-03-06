@@ -14,7 +14,7 @@
 
 <style>
   div {
+    padding: 20px;
     width: 50%;
-    background-color: darkgray;
   }
 </style>

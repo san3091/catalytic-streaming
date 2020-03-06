@@ -30,7 +30,6 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: blueviolet;
   }
 
   #sound-cloud {
