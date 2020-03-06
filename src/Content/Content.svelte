@@ -41,7 +41,7 @@
   let selectedAlbumURL = albumURLs[0]
   let albums = []
   $: firstAlbum = albums[0]
-  $: lastAlbum = albums[29]
+  $: lastAlbum = albums[albums.length - 1]
 
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
