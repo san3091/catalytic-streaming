@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import QuickPlayBanner from './QuickPlayBanner/QuickPlayBanner.svelte'
   import Carousel from './Carousel/Carousel.svelte'
-  import SoundCloudPlayer from './SoundCloudPlayer/SoundCloudPlayer.svelte'
+  import CurrentAlbum from './CurrentAlbum/CurrentAlbum.svelte'
 
   const albumURLs = [
     'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
@@ -69,7 +69,7 @@
   lastAlbum={lastAlbum}/>
 <div class='content'>
   <Carousel albums={albums} selectAlbum={selectAlbum} />
-  <SoundCloudPlayer selectedAlbumURL={selectedAlbumURL} />
+  <CurrentAlbum selectedAlbumURL={selectedAlbumURL} />
 </div>
 
 <style>
