@@ -14,6 +14,7 @@
 
 <style>
   div {
-    width: 40%;
+    width: 50%;
+    background-color: darkgray;
   }
 </style>

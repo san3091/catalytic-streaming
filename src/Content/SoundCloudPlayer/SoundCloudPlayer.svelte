@@ -9,6 +9,7 @@
     SC.oEmbed(url, {
       element: document.getElementById('sound-cloud')
     }).then((album) => {
+      let iframe = document.getElementsByTagName('iframe')
       albumInfo = album
     })
   }
@@ -28,11 +29,11 @@
   .current-album {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    justify-content: center;
+    background-color: blueviolet;
   }
 
   #sound-cloud {
-    width: 60%;
-    flex-grow: 2;
+    width: 50%;
   }
 </style>
