@@ -23,19 +23,19 @@
   const maxIndex = () => groupedAlbums.length - 1
   
   const previousGroup = () => {
-    const nextOffset = $carouselOffset + (carouselWidth - 145)
-    console.log(nextOffset)
-    nextOffset < 0
+    const nextOffset = $carouselOffset - (carouselWidth - 190)
+
+    nextOffset > 0
       ? carouselOffset.set(nextOffset)
       : carouselOffset.set(0)
   }
 
   const nextGroup = () => {
     const overflowLength = itemsWidth - carouselWidth
-    const nextOffset = $carouselOffset - (carouselWidth - 145)
+    const nextOffset = $carouselOffset + carouselWidth - 190
 
-    overflowLength < -nextOffset
-      ? carouselOffset.set(0 - overflowLength)
+    overflowLength < nextOffset
+      ? carouselOffset.set(overflowLength)
       : carouselOffset.set(nextOffset)
   }
 
@@ -86,12 +86,13 @@
   }
 
   .carousel-items {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    left: var(--carousel-offset);
+    right: var(--carousel-offset);
   }
   
   .carousel-item {
