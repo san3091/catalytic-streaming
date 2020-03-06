@@ -3,43 +3,27 @@
   export let albums
   export let selectAlbum
   let carouselWidth, itemsWidth
-  let groupedAlbums = []
-  let currentGroupIndex = 0
   let carouselOffset = tweened(0)
+  $: slideDistance = (Math.floor(carouselWidth / 190) - 1) * 190
+  $: overflowWidth = itemsWidth - carouselWidth
 
-  const groupAlbums = (albums) => {
-    let groups = [[]]
-    albums.forEach((album, index) => {
-      const lastGroup = groups[groups.length - 1]
-      if (lastGroup.length < 9) {
-        lastGroup.push(album)
-      } else {
-        groups.push([album])
-      }
-    })
-    return groups
-  }
-
-  const maxIndex = () => groupedAlbums.length - 1
-  
-  const previousGroup = () => {
-    const nextOffset = $carouselOffset - (carouselWidth - 190)
+  const slideLeft = () => {
+    const nextOffset = $carouselOffset - slideDistance
 
     nextOffset > 0
       ? carouselOffset.set(nextOffset)
       : carouselOffset.set(0)
   }
 
-  const nextGroup = () => {
-    const overflowLength = itemsWidth - carouselWidth
-    const nextOffset = $carouselOffset + carouselWidth - 190
+  const slideRight = () => {
+    const nextOffset = $carouselOffset + slideDistance
 
-    overflowLength < nextOffset
-      ? carouselOffset.set(overflowLength)
+    overflowWidth < nextOffset
+      ? carouselOffset.set(overflowWidth)
       : carouselOffset.set(nextOffset)
   }
 
-  $: groupedAlbums = groupAlbums(albums)
+  
 </script>
 
 	<h4>Current Selections</h4>
@@ -49,7 +33,7 @@
     {#if $carouselOffset}
       <button 
         class='previous-button'
-        on:click={previousGroup}
+        on:click={slideLeft}
       >left
       </button>
     {/if}
@@ -70,11 +54,13 @@
         </div>
       {/each}
     </div>
-    <button 
-      class='next-button'
-      on:click={nextGroup}
-    >right
-    </button>
+    {#if $carouselOffset != overflowWidth }
+      <button 
+        class='next-button'
+        on:click={slideRight}
+      >right
+      </button>
+    {/if}
   </div>
 
 <style>
