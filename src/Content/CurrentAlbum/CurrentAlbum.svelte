@@ -6,16 +6,28 @@
   let albumInfo
 </script>
 
-<div class='current-album'>
-  <SoundCloudPlayer 
-    selectedAlbum={selectedAlbum} 
-  />
-  <AlbumInfo album={selectedAlbum} />
+<div class='current-album-container'>
+  <div class='current-album'>
+    <SoundCloudPlayer 
+      selectedAlbum={selectedAlbum} 
+    />
+    <AlbumInfo album={selectedAlbum} />
+  </div>
 </div>
 
 <style>
+  .current-album-container {
+    width: 100%;
+    background-color: lavender;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .current-album {
     display: flex;
+    width: 1200px;
     flex-direction: row;
     justify-content: center;
   }

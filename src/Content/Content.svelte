@@ -84,7 +84,7 @@
   .content {
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
+    align-items: center;
     width: 100%;
   }
 </style>

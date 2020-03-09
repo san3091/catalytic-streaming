@@ -27,7 +27,8 @@
 
   .info-content {
     padding: 20px;
-    border: 2px solid var(--color);
+    border: 2px solid black;
+    background-color: hsl(0, 0%, 100%, 80%);
   }
 
   h4 {

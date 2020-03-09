@@ -62,7 +62,9 @@
 
 <style>
   .carousel-container {
-    padding-top: 30px;
+    padding: 30px;
+    width: 100%;
+    max-width: 1200px;
   }
 
   h3 {
