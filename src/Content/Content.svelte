@@ -5,7 +5,7 @@
   import CurrentAlbum from './CurrentAlbum/CurrentAlbum.svelte'
 
   const albumURLs = [
-    'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
+    // 'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
     'https://soundcloud.com/playlist/sets/love-hurts',
     'https://soundcloud.com/soundcloud-hustle/sets/hip-hop-party-starters',
     'https://soundcloud.com/soundcloud-hustle/sets/hip-hop-love-songs',
@@ -38,16 +38,24 @@
     'https://soundcloud.com/soundcloud-auras/sets/queen-things-women-of-r-b'
   ]
 
-  let selectedAlbumURL = albumURLs[0]
   let albums = []
   $: firstAlbum = albums[0]
   $: lastAlbum = albums[albums.length - 1]
+  $: selectedAlbum = albums[0]
 
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
+      let color 
+      if (index == 0) { 
+        color = '#008000' 
+      } else if (index == albumURLs.length - 1) { 
+        color = '#FFFF00' 
+      } else { color = '#FFA500' }
+      
       albums.push({ loading: true })
-      SC.oEmbed(albumURLs[index], {})
+      SC.oEmbed(albumURLs[index], {color})
       .then((newAlbum) => {
+        newAlbum.color = color
         newAlbum.index = index
         albums[index] = newAlbum
       })
@@ -55,7 +63,7 @@
   }
 
   const selectAlbum = (albumIndex) => {
-    selectedAlbumURL = albumURLs[albumIndex]
+    selectedAlbum = albums[albumIndex]
   }
 
   onMount(() => {
@@ -69,7 +77,7 @@
   lastAlbum={lastAlbum}/>
 <div class='content'>
   <Carousel albums={albums} selectAlbum={selectAlbum} />
-  <CurrentAlbum selectedAlbumURL={selectedAlbumURL} />
+  <CurrentAlbum selectedAlbum={selectedAlbum} />
 </div>
 
 <style>

@@ -2,24 +2,15 @@
   import SoundCloudPlayer from './SoundCloudPlayer/SoundCloudPlayer.svelte'
   import AlbumInfo from './AlbumInfo/AlbumInfo.svelte'
 
-  export let selectedAlbumURL
-  let loading = true
+  export let selectedAlbum
   let albumInfo
-  const setLoading = (bool) => {
-    loading = bool
-  }
-
-  const updateAlbumInfo = (newInfo) => {
-    albumInfo = newInfo
-  }
 </script>
 
 <div class='current-album'>
   <SoundCloudPlayer 
-    setLoading={setLoading}
-    selectedAlbumURL={selectedAlbumURL} 
-    updateAlbumInfo={updateAlbumInfo} />
-  <AlbumInfo albumInfo={albumInfo} loading={loading} />
+    selectedAlbum={selectedAlbum} 
+  />
+  <AlbumInfo album={selectedAlbum} />
 </div>
 
 <style>

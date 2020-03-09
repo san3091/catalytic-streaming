@@ -11,10 +11,10 @@
       class='new-today button' 
       on:click={selectAlbum(firstAlbum.index)}
     >
-      <div class='quick-play-label' style='--color:green'>
-        <h2>New Today</h2>
-      </div>
       {#if firstAlbum }
+        <div class='quick-play-label' style='--color:{firstAlbum.color}'>
+          <h2>New Today</h2>
+        </div>
         <img transition:fade src={firstAlbum.thumbnail_url} />
       {/if}
     </div>
@@ -23,10 +23,10 @@
         class='dont-miss button' 
         on:click={selectAlbum(lastAlbum.index)}
       >
-        <div class='quick-play-label' style='--color:yellow'>
-          <h2>Don't Miss</h2>
-        </div>
         {#if lastAlbum }
+          <div class='quick-play-label' style='--color:{lastAlbum.color}'>
+            <h2>Don't Miss</h2>
+          </div>
           <img transition:fade src={lastAlbum.thumbnail_url} />
         {/if}
       </div>

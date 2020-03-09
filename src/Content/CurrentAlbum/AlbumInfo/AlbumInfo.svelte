@@ -1,17 +1,19 @@
 <script>
   import { fade } from 'svelte/transition'
-  export let albumInfo
-  export let loading
-
+  export let album
 </script>
 
 <div class='info-container'>
-  {#if albumInfo && !loading}
-    <div class='info-content' transition:fade>
-      <h1>{albumInfo.title}</h1>
-      <h4>{albumInfo.author_name}</h4>
+  {#if album}
+    <div 
+      class='info-content' 
+      transition:fade
+      style='--color:{album.color}'
+      >
+      <h1>{album.title}</h1>
+      <h4>{album.author_name}</h4>
       <p>
-        {albumInfo.description}
+        {album.description}
       </p>
     </div>
   {/if}
@@ -25,7 +27,7 @@
 
   .info-content {
     padding: 20px;
-    border: 2px solid orange;
+    border: 2px solid var(--color);
   }
 
   h4 {

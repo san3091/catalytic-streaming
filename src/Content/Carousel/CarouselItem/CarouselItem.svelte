@@ -6,7 +6,9 @@
 </script>
 
   {#if !album.loading}
-    <div transition:fade class='carousel-item' on:click={ selectAlbum(album.index) } >
+    <div 
+      transition:fade class='carousel-item'
+      on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
         <h5>{album.title}</h5>
