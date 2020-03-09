@@ -9,7 +9,6 @@
   {#if !album.loading}
     <div 
       transition:fade
-      on:introstart={() => {console.log('in')}}
       class='carousel-item'
       style='--color:{album.color}'
       on:click={ selectAlbum(album.index) } >
@@ -43,7 +42,6 @@
     padding: 10px;
     cursor: pointer;
     background-color: white;
-
   }
   
   .carousel-item::before {
@@ -81,6 +79,16 @@
   img {
     height: 150px;
     width: 150px;
+  }
+
+  .carousel-item:hover{
+    top: -2px;
+    left: -2px;
+  }
+
+  .carousel-item:hover::after {
+    top: 8px;
+    left: 8px;
   }
 
   @keyframes fade-in {
