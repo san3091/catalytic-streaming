@@ -120,4 +120,14 @@
     width: 100%;
     z-index: -2;
   }
+
+  .button:hover .quick-play-label {
+    top: 18px;
+    left: 18px;
+  }
+  
+  .button:hover .quick-play-label::after {
+    top: 8px;
+    left: 8˝px;
+  }
 </style>
