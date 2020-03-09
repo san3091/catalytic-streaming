@@ -80,7 +80,7 @@
     opacity: 0.5;
     position: absolute;
     width: 80px;
-    z-index: 1;
+    z-index: 2;
   }
 
   .previous-button{

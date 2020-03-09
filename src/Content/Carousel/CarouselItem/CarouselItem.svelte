@@ -5,9 +5,13 @@
   export let selectAlbum
 </script>
 
+<div class='item-container'>
   {#if !album.loading}
     <div 
-      transition:fade class='carousel-item'
+      transition:fade
+      on:introstart={() => {console.log('in')}}
+      class='carousel-item'
+      style='--color:{album.color}'
       on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
@@ -16,31 +20,79 @@
       </div>
     </div>
   {/if}
+</div>
+
 
 <style>
-  .carousel-item {
+  .item-container {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 220px;
-    min-width: 150px;
-    background-color: white;
+    z-index: 1;
     margin: 10px;
+    margin-bottom: 35px;
+    height: 220px;
+    width: 170px;
+    background-color: white;
+  }
+
+  .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     padding: 10px;
     cursor: pointer;
-    box-shadow: 1px 1px 0 black;
+    background-color: white;
+
   }
   
+  .carousel-item::before {
+    content: '';
+    position: absolute;
+    background-color: var(--color);
+    top: 3px;
+    left: 3px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    animation: fade-in 1s ease-in;
+  }
+  
+  .carousel-item::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    opacity: 0;
+    top: 6px;
+    left: 6px;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    animation: fade-in 1s 0.5s ease-in forwards;
+  }
+
   .album-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
     padding: 10px;
   }
   
   img {
     height: 150px;
     width: 150px;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      background-color: white;
+    }
+    50% {
+      background-color: white;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 </style>

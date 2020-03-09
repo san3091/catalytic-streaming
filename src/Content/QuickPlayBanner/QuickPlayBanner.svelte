@@ -91,8 +91,6 @@
     background-color: aliceblue;
   }
 
- 
-
   .quick-play-label {
     position: absolute;
     top: 20px;

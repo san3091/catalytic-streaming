@@ -47,10 +47,10 @@
     albumURLs.forEach((url, index) => {
       let color 
       if (index == 0) { 
-        color = '#008000' 
-      } else if (index == albumURLs.length - 1) { 
         color = '#FFFF00' 
-      } else { color = '#FFA500' }
+      } else if (index == albumURLs.length - 1) { 
+        color = '#FF0000' 
+      } else { color = '#E6E6FA' }
       
       albums.push({ loading: true })
       SC.oEmbed(albumURLs[index], {color})
