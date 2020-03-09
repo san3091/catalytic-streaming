@@ -7,9 +7,9 @@
 
 <div class='info-container'>
   {#if albumInfo && !loading}
-    <div transition:fade>
+    <div class='info-content' transition:fade>
       <h1>{albumInfo.title}</h1>
-      <h3>{albumInfo.author_name}</h3>
+      <h4>{albumInfo.author_name}</h4>
       <p>
         {albumInfo.description}
       </p>
@@ -19,7 +19,16 @@
 
 <style>
   .info-container {
+    padding: 20px 0 10px 10px;
+    width: 50%;
+  }
+
+  .info-content {
     padding: 20px;
-    width: 40%;
+    border: 2px solid orange;
+  }
+
+  h4 {
+    margin-bottom: 20px;
   }
 </style>

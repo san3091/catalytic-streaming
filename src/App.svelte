@@ -12,7 +12,6 @@
 	:global(*) {
 		margin: 0;
 		padding: 0;
-		color: slategray;
 	}
 
 	:global(button) {
@@ -24,7 +23,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		font-family: 'Raleway'
+		font-family: 'Raleway';
 	}
 	
 </style>

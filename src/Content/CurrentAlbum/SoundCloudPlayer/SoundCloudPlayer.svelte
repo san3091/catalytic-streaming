@@ -37,7 +37,7 @@
 <style>
   .player-container {
     position: relative;
-    width: 60%;
+    width: 50%;
     height: 100%;
     background-color: white;
   }

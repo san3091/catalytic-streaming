@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 210px;
+    height: 220px;
     min-width: 150px;
     background-color: white;
     margin: 10px;
