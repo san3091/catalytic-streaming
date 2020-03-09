@@ -27,38 +27,47 @@
   }
 </script>
 
-<h4>Current Selections</h4>
-<div 
-  class='album-carousel'
-  bind:clientWidth={carouselWidth}>
-  {#if $carouselOffset}
-    <button 
-      class='previous-button'
-      on:click={slideLeft}
-    >
-      <i class="material-icons">keyboard_arrow_left</i>
-    </button>
-  {/if}
+<div class='carousel-container'>
+  <h3>Current Selections</h3>
   <div 
-    class='carousel-items' 
-    style='--carousel-offset:{$carouselOffset}px'
-    bind:clientWidth={itemsWidth}
-  >
-    {#each albums as album}
-      <CarouselItem album={album} selectAlbum={selectAlbum} />
-    {/each}
-  </div>
-  {#if $carouselOffset != overflowWidth }
-    <button 
-      class='next-button'
-      on:click={slideRight}
+    class='album-carousel'
+    bind:clientWidth={carouselWidth}>
+    {#if $carouselOffset}
+      <button 
+        class='previous-button'
+        on:click={slideLeft}
+      >
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+    {/if}
+    <div 
+      class='carousel-items' 
+      style='--carousel-offset:{$carouselOffset}px'
+      bind:clientWidth={itemsWidth}
     >
-      <i class="material-icons">keyboard_arrow_right</i>
-    </button>
-  {/if}
+      {#each albums as album}
+        <CarouselItem album={album} selectAlbum={selectAlbum} />
+      {/each}
+    </div>
+    {#if $carouselOffset != overflowWidth }
+      <button 
+        class='next-button'
+        on:click={slideRight}
+      >
+        <i class="material-icons">keyboard_arrow_right</i>
+      </button>
+    {/if}
+  </div>
 </div>
 
 <style>
+  .carousel-container {
+    padding-top: 30px;
+  }
+
+  h3 {
+    padding-bottom: 10px;
+  }
   .album-carousel {
     position: relative;
     display: flex;

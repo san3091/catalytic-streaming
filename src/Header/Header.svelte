@@ -1,5 +1,4 @@
 <script>
-  import Search from './Search/Search.svelte'
   import Profile from './Profile/Profile.svelte'
 </script>
 
@@ -7,7 +6,6 @@
   <div class='header-content'>
     <h1>Catalytic Sound Streaming</h1>
     <div class='header-right'>
-      <Search />
       <Profile />
     </div>
   </div>
