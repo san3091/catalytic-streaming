@@ -35,7 +35,8 @@
     <button 
       class='previous-button'
       on:click={slideLeft}
-    >left
+    >
+      <i class="material-icons">keyboard_arrow_left</i>
     </button>
   {/if}
   <div 
@@ -51,7 +52,8 @@
     <button 
       class='next-button'
       on:click={slideRight}
-    >right
+    >
+      <i class="material-icons">keyboard_arrow_right</i>
     </button>
   {/if}
 </div>
@@ -77,17 +79,78 @@
   
   button {
     height: 100%;
-    opacity: 0.5;
     position: absolute;
     width: 80px;
     z-index: 2;
+    border: none;
+    opacity: 0;
+    animation: invisible .4s ease-out forwards;
   }
-
+  
   .previous-button{
     left: 0;
+    background: linear-gradient(-90deg, hsl(0, 0%, 0%, 0%), hsl(0, 0%, 0%, 40%));
   }
 
   .next-button {
     right: 0;
+    background: linear-gradient(90deg, hsl(0, 0%, 0%, 0%), hsl(0, 0%, 0%, 40%));
+  }
+
+  .material-icons { 
+    color: rgba(255, 255, 255, 1);
+    font-size: 48px;
+  }
+ 
+  .album-carousel:hover button {
+    animation: visible .4s ease-out forwards, lighten .4s ease-out forwards
+  }
+
+  .album-carousel:hover button:hover {
+    animation: darken .4s ease-out forwards, visible .4s ease-out forwards;
+  }
+
+  button:hover .material-icons {
+    font-size: 52px;
+  }
+
+  @keyframes darken {
+    0% {
+      background-color: hsl(0, 0%, 0%, 0%);
+    }
+
+    100% {
+      background-color: hsl(0, 0%, 0%, 10%);
+    }
+  }
+ 
+  @keyframes lighten {
+    0% {
+      background-color: hsl(0, 0%, 0%, 10%);
+    }
+
+    100% {
+      background-color: hsl(0, 0%, 0%, 0%);
+    }
+  }
+  
+  @keyframes visible {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes invisible {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
   }
 </style>

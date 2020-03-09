@@ -50,7 +50,7 @@
         color = '#FFFF00' 
       } else if (index == albumURLs.length - 1) { 
         color = '#FF0000' 
-      } else { color = '#E6E6FA' }
+      } else { color = '#734f96' }
       
       albums.push({ loading: true })
       SC.oEmbed(albumURLs[index], {color})
