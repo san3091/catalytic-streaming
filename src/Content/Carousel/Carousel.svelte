@@ -1,6 +1,7 @@
 <script>
   import { tweened } from 'svelte/motion'
   import { cubicInOut } from 'svelte/easing'
+  import { fade } from 'svelte/transition'
   import CarouselItem from './CarouselItem/CarouselItem.svelte'
 
   export let albums
@@ -35,6 +36,7 @@
     {#if $carouselOffset}
       <button 
         class='previous-button'
+        transition:fade
         on:click={slideLeft}
       >
         <i class="material-icons">keyboard_arrow_left</i>
@@ -52,6 +54,7 @@
     {#if $carouselOffset != overflowWidth }
       <button 
         class='next-button'
+        transition:fade
         on:click={slideRight}
       >
         <i class="material-icons">keyboard_arrow_right</i>

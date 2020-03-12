@@ -3,6 +3,7 @@
   import AlbumInfo from './AlbumInfo/AlbumInfo.svelte'
 
   export let selectedAlbum
+  export let loading
   let albumInfo
 </script>
 
@@ -10,6 +11,7 @@
   <div class='current-album'>
     <SoundCloudPlayer 
       selectedAlbum={selectedAlbum} 
+      loading={loading}
     />
     <AlbumInfo album={selectedAlbum} />
   </div>

@@ -38,19 +38,27 @@
     'https://soundcloud.com/soundcloud-auras/sets/queen-things-women-of-r-b'
   ]
 
+  let selectedAlbum
   let albums = []
+  let loading = false
+
   $: firstAlbum = albums[0]
   $: lastAlbum = albums[albums.length - 1]
-  $: selectedAlbum = albums[0]
+
+  const albumColor = (index) => {
+    let color 
+    if (index == 0) { 
+      color = '#FFFF00' 
+    } else if (index == albumURLs.length - 1) { 
+      color = '#FF0000' 
+    } else { color = '#734f96' }
+
+    return color
+  }
 
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
-      let color 
-      if (index == 0) { 
-        color = '#FFFF00' 
-      } else if (index == albumURLs.length - 1) { 
-        color = '#FF0000' 
-      } else { color = '#734f96' }
+      const color = albumColor(index)
       
       albums.push({ loading: true })
       SC.oEmbed(albumURLs[index], {color})
@@ -63,6 +71,15 @@
   }
 
   const selectAlbum = (albumIndex) => {
+    loading = true
+    const color = albumColor(albumIndex)
+    SC.oEmbed(albumURLs[albumIndex], {auto_play: true, color: color})
+    .then((newAlbum) => {
+      newAlbum.color = color
+      newAlbum.index = albumIndex
+      albums[albumIndex] = newAlbum
+      loading = false
+    })
     selectedAlbum = albums[albumIndex]
   }
 
@@ -77,7 +94,7 @@
   lastAlbum={lastAlbum}/>
 <div class='content'>
   <Carousel albums={albums} selectAlbum={selectAlbum} />
-  <CurrentAlbum selectedAlbum={selectedAlbum} />
+  <CurrentAlbum selectedAlbum={selectedAlbum || albums[0]} loading={loading} />
 </div>
 
 <style>
