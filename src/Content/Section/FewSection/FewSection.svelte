@@ -1,4 +1,5 @@
 <script>
+  import { tweened } from 'svelte/motion'
   import AlbumTile from '../AlbumTile/AlbumTile.svelte'
   import AlbumInfo from '../AlbumInfo/AlbumInfo.svelte'
   import SoundCloudPlayer from '../SoundCloudPlayer/SoundCloudPlayer.svelte'
@@ -8,17 +9,20 @@
   export let loading
   export let selectAlbum
   export let selectedAlbum
+  let playerWidth = tweened(0)
+  let width = tweened(null)
 
-  $: sectionWidth = open ? 1200 : null
-  $: width = open || albums.length < 5 ? 400 : 580
+  $: playerWidth.set(open ? 680 : 0)
+  $: width.set(open || albums.length < 5 ? 400 : 580)
 </script>
 
-<div class='few-section' style='--section-width:{sectionWidth}px'>
+<div class='few-section' 
+>
   <h3>{headerText}</h3>
   <div class='few-section-content'>
     <div 
       class='albums' 
-      style='--width:{width}px;'>
+      style='--width:{$width}px;'>
       {#each albums as album}
         <AlbumTile
           album={album}
@@ -27,7 +31,7 @@
     </div>
     
     {#if open}
-      <div class='player'>
+      <div class='player' style='--player-width:{$playerWidth}px'>
         <div class='info-container'>
           <AlbumInfo album={selectedAlbum} />
         </div>
@@ -41,19 +45,18 @@
 
 <style>
   .few-section {
-    padding: 30px;
     display: flex;
     flex-direction: column;
     margin: 20px;
     box-sizing: border-box;
-    width: var(--section-width);  
-    background-color: beige;
   }
 
   .few-section-content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: beige;
+    padding: 30px;
   }
 
   .albums {
@@ -61,7 +64,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-    margin-left: -15px;
     width: var(--width);
   }
 
@@ -70,6 +72,7 @@
     flex-direction: column;
     flex-grow: 1;
     padding: 15px 30px 0 30px;
+    width: var(--player-width);
   }
 
   .info-container {

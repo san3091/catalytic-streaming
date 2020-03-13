@@ -9,7 +9,7 @@
   
 <div class='player-container'>
   {#if loading}
-    <img transition:fade src='player-image.svg' />
+    <!-- <img transition:fade src='player-image.svg' /> -->
   {:else}
     {@html selectedAlbum && selectedAlbum.html}
   {/if}
