@@ -2,7 +2,7 @@
   import { tweened } from 'svelte/motion'
   import { cubicInOut } from 'svelte/easing'
   import { fade } from 'svelte/transition'
-  import CarouselItem from './CarouselItem/CarouselItem.svelte'
+  import AlbumTile from '../AlbumTile/AlbumTile.svelte'
 
   export let albums
   export let headerText
@@ -49,7 +49,7 @@
       bind:clientWidth={itemsWidth}
     >
       {#each albums as album}
-        <CarouselItem 
+        <AlbumTile 
           album={album} 
           selectAlbum={selectAlbum} />
       {/each}
@@ -73,9 +73,6 @@
     max-width: 1200px;
   }
 
-  h3 {
-    padding-bottom: 10px;
-  }
   .album-carousel {
     position: relative;
     display: flex;

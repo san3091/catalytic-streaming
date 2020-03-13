@@ -19,6 +19,10 @@
 		padding: 0;
 	}
 
+	:global(h3) {
+		margin-bottom: 10px;
+	}
+	
 	main {
 		display: flex;
 		flex-direction: column;

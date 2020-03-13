@@ -2,6 +2,7 @@
   import QuickPlayBanner from './QuickPlayBanner/QuickPlayBanner.svelte'
   import Carousel from './Carousel/Carousel.svelte'
   import CurrentAlbum from './CurrentAlbum/CurrentAlbum.svelte'
+  import FewSection from './FewSection/FewSection.svelte'
 
   export let headerText
   export let sectionNumber
@@ -36,14 +37,24 @@
   firstAlbum={firstAlbum}
   lastAlbum={lastAlbum}/>
 {/if}
-<Carousel 
-  albums={albums} 
-  headerText={headerText}
-  selectAlbum={selectAlbum} />
-<CurrentAlbum 
-  selectedAlbum={selectedAlbum || albums[0]} 
-  open={open}
-  loading={loading} />
+{#if albums.length > 6}
+  <Carousel 
+    albums={albums} 
+    headerText={headerText}
+    selectAlbum={selectAlbum} />
+  <CurrentAlbum 
+    selectedAlbum={selectedAlbum || albums[0]} 
+    open={open}
+    loading={loading} />
+{:else}
+  <FewSection 
+    albums={albums}
+    headerText={headerText}
+    open={open}
+    loading={loading}
+    selectAlbum={selectAlbum}
+    selectedAlbum={selectedAlbum || albums[0]} />
+{/if}
 
 <style>
 </style>

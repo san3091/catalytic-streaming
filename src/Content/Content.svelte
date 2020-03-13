@@ -79,7 +79,7 @@
 
 <div class='content'>
   <Section
-    headerText='Rotating Seclections'
+    headerText='Rotating Seclection'
     sectionNumber={0}
     albums={albums}
     open={openStates[0]} 
@@ -93,16 +93,17 @@
   <Section 
     headerText='Tag 2'
     sectionNumber={2}
-    albums={albums.slice(6, 18)}
+    albums={albums.slice(6, 11)}
     open={openStates[2]} 
     updateOpenStates={updateOpenStates} />
-</div>˝
+</div>
 
 <style>
   .content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
   }
 </style>

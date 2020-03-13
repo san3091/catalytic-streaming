@@ -14,7 +14,7 @@
       {#if firstAlbum }
         <div class='quick-play-label' style='--color:{firstAlbum.color}'>
           <h2>New Today</h2>
-        </div>˝
+        </div>
         <img transition:fade src={firstAlbum.thumbnail_url} />
       {/if}
     </div>

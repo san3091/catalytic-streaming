@@ -21,8 +21,7 @@
 
 <style>
   .info-container {
-    padding: 20px 0 10px 10px;
-    width: 50%;
+    width: 100%;
   }
 
   .info-content {

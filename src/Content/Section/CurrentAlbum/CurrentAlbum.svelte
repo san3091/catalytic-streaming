@@ -1,7 +1,7 @@
 <script>
   import { slide } from 'svelte/transition'
-  import SoundCloudPlayer from './SoundCloudPlayer/SoundCloudPlayer.svelte'
-  import AlbumInfo from './AlbumInfo/AlbumInfo.svelte'
+  import SoundCloudPlayer from '../SoundCloudPlayer/SoundCloudPlayer.svelte'
+  import AlbumInfo from '../AlbumInfo/AlbumInfo.svelte'
 
   export let selectedAlbum
   export let loading
@@ -12,11 +12,14 @@
 {#if open}
   <div transition:slide class='current-album-container'>
     <div class='current-album'>
-      <SoundCloudPlayer 
-        selectedAlbum={selectedAlbum} 
-        loading={loading}
-      />
-      <AlbumInfo album={selectedAlbum} />
+      <div class='player'>
+        <SoundCloudPlayer 
+          selectedAlbum={selectedAlbum} 
+          loading={loading} />
+      </div>
+      <div class='info-container'>
+        <AlbumInfo album={selectedAlbum} />
+      </div>
     </div>
   </div>
 {/if}
@@ -29,6 +32,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
   }
 
   .current-album {
@@ -36,5 +40,14 @@
     width: 1200px;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .player {
+    width: 50%;
+  }
+
+  .info-container {
+    padding: 20px 0 10px 20px;
+    width: 50%;
   }
 </style>
