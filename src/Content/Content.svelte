@@ -1,8 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-  import QuickPlayBanner from './QuickPlayBanner/QuickPlayBanner.svelte'
-  import Carousel from './Carousel/Carousel.svelte'
-  import CurrentAlbum from './CurrentAlbum/CurrentAlbum.svelte'
+  import Section from './Section/Section.svelte'
 
   const albumURLs = [
     // 'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
@@ -38,13 +36,8 @@
     'https://soundcloud.com/soundcloud-auras/sets/queen-things-women-of-r-b'
   ]
 
-  let selectedAlbums = []
   let albums = []
-  let loading = false
   let openStates = [true, false, false]
-
-  $: firstAlbum = albums[0]
-  $: lastAlbum = albums[albums.length - 1]
 
   const albumColor = (index) => {
     let color 
@@ -53,8 +46,9 @@
     } else if (index == albumURLs.length - 1) { 
       color = '#FF0000' 
     } else { color = '#734f96' }
-   return color
+    return color
   }
+
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
       const color = albumColor(index)
@@ -62,6 +56,7 @@
       albums.push({ loading: true })
       SC.oEmbed(albumURLs[index], {color})
       .then((newAlbum) => {
+        newAlbum.url = url
         newAlbum.color = color
         newAlbum.index = index
         albums[index] = newAlbum
@@ -69,23 +64,12 @@
     })
   }
 
-  const selectAlbum = (albumIndex, sectionIndex) => {
-    loading = true
-    const color = albumColor(albumIndex)
-    SC.oEmbed(albumURLs[albumIndex], {auto_play: true, color: color})
-    .then((newAlbum) => {
-      newAlbum.color = color
-      newAlbum.index = albumIndex
-      albums[albumIndex] = newAlbum
-      loading = false
-    })
+  const updateOpenStates = (sectionNumber) => {
     openStates.forEach((state, index) => { 
-      index == sectionIndex
+      index == sectionNumber
        ? openStates[index] = true
        : openStates[index] = false
     })
-    
-    selectedAlbums[sectionIndex] = albums[albumIndex]
   }
 
   onMount(() => {
@@ -93,39 +77,26 @@
   })
 </script>
 
-<QuickPlayBanner 
-  selectAlbum={selectAlbum}
-  firstAlbum={firstAlbum}
-  lastAlbum={lastAlbum}/>
 <div class='content'>
-  <Carousel 
-    albums={albums} 
-    headerText='Rotating Selelection'
+  <Section
+    headerText='Rotating Seclections'
     sectionNumber={0}
-    selectAlbum={selectAlbum} />
-  <CurrentAlbum 
-    open={openStates[0]}
-    selectedAlbum={selectedAlbums[0] || albums[0]} 
-    loading={loading} />
-  <Carousel 
-    albums={albums.slice(0,6)} 
+    albums={albums}
+    open={openStates[0]} 
+    updateOpenStates={updateOpenStates} />
+  <Section 
     headerText='Tag 1'
     sectionNumber={1}
-    selectAlbum={selectAlbum} />
-  <CurrentAlbum 
-    open={openStates[1]}
-    selectedAlbum={selectedAlbums[1] || albums[0]} 
-    loading={loading} />
-  <Carousel 
-    albums={albums.slice(0,6)} 
+    albums={albums.slice(2, 8)}
+    open={openStates[1]} 
+    updateOpenStates={updateOpenStates} />
+  <Section 
     headerText='Tag 2'
     sectionNumber={2}
-    selectAlbum={selectAlbum} />
-  <CurrentAlbum 
-    open={openStates[2]}
-    selectedAlbum={selectedAlbums[2] || albums[0]} 
-    loading={loading} />
-</div>
+    albums={albums.slice(6, 18)}
+    open={openStates[2]} 
+    updateOpenStates={updateOpenStates} />
+</div>˝
 
 <style>
   .content {

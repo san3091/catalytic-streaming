@@ -12,7 +12,7 @@
       transition:fade
       class='carousel-item'
       style='--color:{album.color}'
-      on:click={ selectAlbum(album.index, sectionNumber) } >
+      on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
         <h5>{album.title}</h5>

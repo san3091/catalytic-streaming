@@ -6,7 +6,6 @@
 
   export let albums
   export let headerText
-  export let sectionNumber
   export let selectAlbum
   let carouselWidth, itemsWidth
   let carouselOffset = tweened(0, { easing: cubicInOut })
@@ -52,7 +51,6 @@
       {#each albums as album}
         <CarouselItem 
           album={album} 
-          sectionNumber={sectionNumber}
           selectAlbum={selectAlbum} />
       {/each}
     </div>
