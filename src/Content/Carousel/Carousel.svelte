@@ -5,6 +5,8 @@
   import CarouselItem from './CarouselItem/CarouselItem.svelte'
 
   export let albums
+  export let headerText
+  export let sectionNumber
   export let selectAlbum
   let carouselWidth, itemsWidth
   let carouselOffset = tweened(0, { easing: cubicInOut })
@@ -29,7 +31,7 @@
 </script>
 
 <div class='carousel-container'>
-  <h3>Current Selections</h3>
+  <h3>{headerText}</h3>
   <div 
     class='album-carousel'
     bind:clientWidth={carouselWidth}>
@@ -48,7 +50,10 @@
       bind:clientWidth={itemsWidth}
     >
       {#each albums as album}
-        <CarouselItem album={album} selectAlbum={selectAlbum} />
+        <CarouselItem 
+          album={album} 
+          sectionNumber={sectionNumber}
+          selectAlbum={selectAlbum} />
       {/each}
     </div>
     {#if $carouselOffset != overflowWidth }

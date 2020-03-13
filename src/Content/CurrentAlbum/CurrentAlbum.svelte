@@ -1,21 +1,25 @@
 <script>
+  import { slide } from 'svelte/transition'
   import SoundCloudPlayer from './SoundCloudPlayer/SoundCloudPlayer.svelte'
   import AlbumInfo from './AlbumInfo/AlbumInfo.svelte'
 
   export let selectedAlbum
   export let loading
+  export let open
   let albumInfo
 </script>
 
-<div class='current-album-container'>
-  <div class='current-album'>
-    <SoundCloudPlayer 
-      selectedAlbum={selectedAlbum} 
-      loading={loading}
-    />
-    <AlbumInfo album={selectedAlbum} />
+{#if open}
+  <div transition:slide class='current-album-container'>
+    <div class='current-album'>
+      <SoundCloudPlayer 
+        selectedAlbum={selectedAlbum} 
+        loading={loading}
+      />
+      <AlbumInfo album={selectedAlbum} />
+    </div>
   </div>
-</div>
+{/if}
 
 <style>
   .current-album-container {

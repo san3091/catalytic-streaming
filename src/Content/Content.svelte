@@ -38,9 +38,10 @@
     'https://soundcloud.com/soundcloud-auras/sets/queen-things-women-of-r-b'
   ]
 
-  let selectedAlbum
+  let selectedAlbums = []
   let albums = []
   let loading = false
+  let openStates = [true, false, false]
 
   $: firstAlbum = albums[0]
   $: lastAlbum = albums[albums.length - 1]
@@ -48,14 +49,12 @@
   const albumColor = (index) => {
     let color 
     if (index == 0) { 
-      color = '#FFFF00' 
+      color = '#FFFF00'
     } else if (index == albumURLs.length - 1) { 
       color = '#FF0000' 
     } else { color = '#734f96' }
-
-    return color
+   return color
   }
-
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
       const color = albumColor(index)
@@ -70,7 +69,7 @@
     })
   }
 
-  const selectAlbum = (albumIndex) => {
+  const selectAlbum = (albumIndex, sectionIndex) => {
     loading = true
     const color = albumColor(albumIndex)
     SC.oEmbed(albumURLs[albumIndex], {auto_play: true, color: color})
@@ -80,7 +79,13 @@
       albums[albumIndex] = newAlbum
       loading = false
     })
-    selectedAlbum = albums[albumIndex]
+    openStates.forEach((state, index) => { 
+      index == sectionIndex
+       ? openStates[index] = true
+       : openStates[index] = false
+    })
+    
+    selectedAlbums[sectionIndex] = albums[albumIndex]
   }
 
   onMount(() => {
@@ -93,8 +98,33 @@
   firstAlbum={firstAlbum}
   lastAlbum={lastAlbum}/>
 <div class='content'>
-  <Carousel albums={albums} selectAlbum={selectAlbum} />
-  <CurrentAlbum selectedAlbum={selectedAlbum || albums[0]} loading={loading} />
+  <Carousel 
+    albums={albums} 
+    headerText='Rotating Selelection'
+    sectionNumber={0}
+    selectAlbum={selectAlbum} />
+  <CurrentAlbum 
+    open={openStates[0]}
+    selectedAlbum={selectedAlbums[0] || albums[0]} 
+    loading={loading} />
+  <Carousel 
+    albums={albums.slice(0,6)} 
+    headerText='Tag 1'
+    sectionNumber={1}
+    selectAlbum={selectAlbum} />
+  <CurrentAlbum 
+    open={openStates[1]}
+    selectedAlbum={selectedAlbums[1] || albums[0]} 
+    loading={loading} />
+  <Carousel 
+    albums={albums.slice(0,6)} 
+    headerText='Tag 2'
+    sectionNumber={2}
+    selectAlbum={selectAlbum} />
+  <CurrentAlbum 
+    open={openStates[2]}
+    selectedAlbum={selectedAlbums[2] || albums[0]} 
+    loading={loading} />
 </div>
 
 <style>

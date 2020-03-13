@@ -3,6 +3,7 @@
 
   export let album
   export let selectAlbum
+  export let sectionNumber
 </script>
 
 <div class='item-container'>
@@ -11,7 +12,7 @@
       transition:fade
       class='carousel-item'
       style='--color:{album.color}'
-      on:click={ selectAlbum(album.index) } >
+      on:click={ selectAlbum(album.index, sectionNumber) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
         <h5>{album.title}</h5>
