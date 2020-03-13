@@ -9,19 +9,19 @@
   <div class='quick-play-banner'>
     <div 
       class='new-today button' 
-      on:click={selectAlbum(firstAlbum.index)}
+      on:click={selectAlbum(firstAlbum.index, 0)}
     >
       {#if firstAlbum }
         <div class='quick-play-label' style='--color:{firstAlbum.color}'>
           <h2>New Today</h2>
-        </div>
+        </div>˝
         <img transition:fade src={firstAlbum.thumbnail_url} />
       {/if}
     </div>
     <div class='upcoming-and-dont-miss'>
       <div 
         class='dont-miss button' 
-        on:click={selectAlbum(lastAlbum.index)}
+        on:click={selectAlbum(lastAlbum.index, 0)}
       >
         {#if lastAlbum }
           <div class='quick-play-label' style='--color:{lastAlbum.color}'>
