@@ -15,6 +15,10 @@
         <div class='quick-play-label' style='--color:{firstAlbum.color}'>
           <h2>New Today</h2>
         </div>
+        <div class='button-content'>
+          <h2>{firstAlbum.title}</h2>
+          <p>{firstAlbum.author_name}</p>
+        </div>
         <img transition:fade src={firstAlbum.thumbnail_url} />
       {/if}
     </div>
@@ -23,12 +27,16 @@
         class='dont-miss button' 
         on:click={selectAlbum(lastAlbum.index, 0)}
       >
-        {#if lastAlbum }
-          <div class='quick-play-label' style='--color:{lastAlbum.color}'>
-            <h2>Don't Miss</h2>
-          </div>
-          <img transition:fade src={lastAlbum.thumbnail_url} />
-        {/if}
+      {#if lastAlbum }
+        <div class='quick-play-label' style='--color:{lastAlbum.color}'>
+          <h2>Don't Miss</h2>
+        </div>
+        <div class='button-content'>
+          <h2>{lastAlbum.title}</h2>
+          <p>{lastAlbum.author_name}</p>
+        </div>
+        <img transition:fade src={lastAlbum.thumbnail_url} />
+      {/if}
       </div>
       <div class='upcoming'>
         <div class='quick-play-label'>
@@ -47,8 +55,28 @@
     width: 100%;
   }
 
-  img {
+  .button {
     position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .button-content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    background: linear-gradient(0deg, hsl(0, 0%, 0%, 60%), hsl(0, 0%, 0%, 0%));
+  }
+
+  .button-content * {
+    color: white;
+    margin: 0;
+  }
+
+  img {
     width: 100%;
     z-index: -3;
   }
