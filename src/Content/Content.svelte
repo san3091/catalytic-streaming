@@ -37,7 +37,7 @@
   ]
 
   let albums = []
-  let openStates = [true, false, false]
+  let openStates = [true, false, false, false]
 
   const albumColor = (index) => {
     let color 
@@ -93,8 +93,20 @@
   <Section 
     headerText='Tag 2'
     sectionNumber={2}
-    albums={albums.slice(6, 11)}
+    albums={albums.slice(6, 18)}
     open={openStates[2]} 
+    updateOpenStates={updateOpenStates} />
+  <Section 
+    headerText='Tag 3'
+    sectionNumber={3}
+    albums={albums.slice(15, 19)}
+    open={openStates[3]} 
+    updateOpenStates={updateOpenStates} />
+  <Section 
+    headerText='Tag 4'
+    sectionNumber={4}
+    albums={albums.slice(15, 17)}
+    open={openStates[4]} 
     updateOpenStates={updateOpenStates} />
 </div>
 

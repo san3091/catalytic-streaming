@@ -50,7 +50,6 @@
   <FewSection 
     albums={albums}
     headerText={headerText}
-    open={open}
     loading={loading}
     selectAlbum={selectAlbum}
     selectedAlbum={selectedAlbum || albums[0]} />
