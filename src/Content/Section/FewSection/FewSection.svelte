@@ -40,7 +40,7 @@
 
 <style>
   .few-section {
-    margin: 20px 0 30px 0;
+    margin: 20px 0 50px 0;
     width: 1200px;
   }
 
@@ -63,7 +63,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 20px 0 0 30px;
+    padding: 0 0 0 30px;
   }
 
   .info-container {

@@ -26,7 +26,6 @@
 
 <style>
   .current-album-container {
-    /* width: 1200px; */
   	box-sizing: border-box;
     width: 100%;
     background-color: lavender;
@@ -34,7 +33,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* margin-bottom: 20px; */
   }
 
   .current-album {
@@ -49,7 +47,7 @@
   }
 
   .info-container {
-    padding: 20px 0 10px 20px;
+    padding: 0 0 10px 20px;
     width: 50%;
   }
 </style>

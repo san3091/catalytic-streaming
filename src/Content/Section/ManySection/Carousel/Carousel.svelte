@@ -83,6 +83,7 @@
   }
 
   .carousel-items {
+    padding: 10px;
     position: relative;
     display: flex;
     flex-direction: row;
