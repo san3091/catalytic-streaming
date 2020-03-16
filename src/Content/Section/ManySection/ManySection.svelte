@@ -12,9 +12,10 @@
 
 <div>
   <Carousel 
-      albums={albums} 
-      headerText={headerText}
-      selectAlbum={selectAlbum} />
+    albums={albums} 
+    headerText={headerText}
+    selectAlbum={selectAlbum} 
+    selectedAlbum={selectedAlbum || albums[0]} />
   <CurrentAlbum 
     selectedAlbum={selectedAlbum || albums[0]} 
     open={open}

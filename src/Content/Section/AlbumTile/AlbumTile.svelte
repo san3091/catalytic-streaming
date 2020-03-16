@@ -3,13 +3,15 @@
 
   export let album
   export let selectAlbum
+  export let selected
 </script>
 
-<div class='item-container'>
+<div class='tile-container'>
   {#if !album.loading}
     <div 
       transition:fade
-      class='carousel-item'
+      class='album-tile'
+      class:selected
       style='--color:{album.color}'
       on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
@@ -23,7 +25,7 @@
 
 
 <style>
-  .item-container {
+  .tile-container {
     position: relative;
     display: flex;
     z-index: 1;
@@ -34,7 +36,7 @@
     background-color: white;
   }
 
-  .carousel-item {
+  .album-tile {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,8 +45,8 @@
     cursor: pointer;
     background-color: white;
   }
-  
-  .carousel-item::before {
+
+  .album-tile::before {
     content: '';
     position: absolute;
     background-color: var(--color);
@@ -56,7 +58,7 @@
     animation: fade-in 1s ease-in;
   }
   
-  .carousel-item::after {
+  .album-tile::after {
     content: '';
     position: absolute;
     background-color: black;
@@ -81,14 +83,24 @@
     width: 150px;
   }
 
-  .carousel-item:hover{
+  .album-tile:hover{
     top: -2px;
     left: -2px;
   }
 
-  .carousel-item:hover::after {
+  .album-tile:hover::after {
     top: 8px;
     left: 8px;
+  }
+
+  .selected, .album-tile.selected:hover {
+    top: -4px;
+    left: -4px;
+  }
+
+  .selected::after, .album-tile.selected:hover::after {
+    top: 10px;
+    left: 10px;
   }
 
   @keyframes fade-in {

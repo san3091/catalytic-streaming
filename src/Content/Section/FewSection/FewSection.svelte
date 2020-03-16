@@ -20,14 +20,16 @@
         {#each albums as album}
           <AlbumTile
             album={album}
-            selectAlbum={selectAlbum} />
+            selectAlbum={selectAlbum}
+            selected={album == selectedAlbum} />
         {/each}
       </div>
     </div>
     
     <div class='player'>
       <div class='info-container'>
-        <AlbumInfo album={selectedAlbum} />
+        <AlbumInfo 
+          album={selectedAlbum} />
       </div>
       <SoundCloudPlayer 
         selectedAlbum={selectedAlbum} 

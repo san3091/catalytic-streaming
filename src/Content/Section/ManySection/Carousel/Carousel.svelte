@@ -7,6 +7,7 @@
   export let albums
   export let headerText
   export let selectAlbum
+  export let selectedAlbum
   let carouselWidth, itemsWidth
   let carouselOffset = tweened(0, { easing: cubicInOut })
   $: slideDistance = (Math.floor(carouselWidth / 190) - 1) * 190
@@ -51,7 +52,8 @@
       {#each albums as album}
         <AlbumTile 
           album={album} 
-          selectAlbum={selectAlbum} />
+          selectAlbum={selectAlbum}
+          selected={selectedAlbum == album} />
       {/each}
     </div>
     {#if $carouselOffset != overflowWidth }
