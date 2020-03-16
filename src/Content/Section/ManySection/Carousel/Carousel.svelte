@@ -2,7 +2,7 @@
   import { tweened } from 'svelte/motion'
   import { cubicInOut } from 'svelte/easing'
   import { fade } from 'svelte/transition'
-  import AlbumTile from '../AlbumTile/AlbumTile.svelte'
+  import AlbumTile from '../../AlbumTile/AlbumTile.svelte'
 
   export let albums
   export let headerText
@@ -68,7 +68,7 @@
 
 <style>
   .carousel-container {
-    padding: 30px;
+    margin: 30px;
     width: 100%;
     max-width: 1200px;
   }

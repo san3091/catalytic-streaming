@@ -1,7 +1,7 @@
 <script>
   import { slide } from 'svelte/transition'
-  import SoundCloudPlayer from '../SoundCloudPlayer/SoundCloudPlayer.svelte'
-  import AlbumInfo from '../AlbumInfo/AlbumInfo.svelte'
+  import SoundCloudPlayer from '../../SoundCloudPlayer/SoundCloudPlayer.svelte'
+  import AlbumInfo from '../../AlbumInfo/AlbumInfo.svelte'
 
   export let selectedAlbum
   export let loading
@@ -26,18 +26,20 @@
 
 <style>
   .current-album-container {
+    /* width: 1200px; */
+  	box-sizing: border-box;
     width: 100%;
     background-color: lavender;
-    padding: 30px 0;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
 
   .current-album {
     display: flex;
-    width: 1200px;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
   }

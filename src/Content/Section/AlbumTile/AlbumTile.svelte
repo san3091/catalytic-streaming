@@ -3,7 +3,6 @@
 
   export let album
   export let selectAlbum
-  export let sectionNumber
 </script>
 
 <div class='item-container'>

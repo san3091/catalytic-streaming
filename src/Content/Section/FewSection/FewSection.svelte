@@ -38,7 +38,7 @@
 
 <style>
   .few-section {
-    margin: 20px;
+    margin: 20px 0 30px 0;
     width: 1200px;
   }
 
@@ -61,7 +61,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 0 30px 0 30px;
+    padding: 20px 0 0 30px;
   }
 
   .info-container {
