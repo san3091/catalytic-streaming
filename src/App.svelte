@@ -21,7 +21,11 @@
 	}
 
 	:global(h2) {
-		margin: 40px 0 20px;
+		margin: 40px 0 10px;
+	}
+
+	:global(p) {
+		margin-bottom: 20px;
 	}
 
 	:global(body) {
@@ -34,5 +38,6 @@
 		flex-direction: column;
 		align-items: center;
 		font-family: 'Raleway';
+		margin-bottom: 120px;
 	}
 </style>

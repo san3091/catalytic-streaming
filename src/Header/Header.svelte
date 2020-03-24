@@ -16,6 +16,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    background-color: hsl(0, 0%, 100%, 80%);
   }
 
   .header-content {
@@ -28,6 +29,7 @@
   img { 
     height: 60px;
   }
+
   .header-right {
     display: flex;
     flex-direction: row;

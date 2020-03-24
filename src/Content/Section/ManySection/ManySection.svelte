@@ -4,6 +4,7 @@
 
   export let albums
   export let headerText
+  export let sectionDescription
   export let loading
   export let selectAlbum
   export let selectedAlbum
@@ -12,6 +13,7 @@
 
 <div>
   <h2>{headerText}</h2>
+  <p>{sectionDescription}</p>
   <Carousel 
     albums={albums} 
     headerText={headerText}
@@ -25,7 +27,7 @@
 
 <style>
 
-  h2 {
+  h2, p {
     align-self: flex-start;
   }
 

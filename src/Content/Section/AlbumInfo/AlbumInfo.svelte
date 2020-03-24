@@ -12,9 +12,11 @@
       >
       <h3>{album.title}</h3>
       <h4>{album.author_name}</h4>
-      <p>
-        {album.description}
-      </p>
+      {#if album.description}
+        <p>
+          {album.description}
+        </p>
+      {/if}
     </div>
   {/if}
 </div>
@@ -30,7 +32,8 @@
     background-color: hsl(0, 0%, 100%, 80%);
   }
 
-  h4 {
-    margin-bottom: 20px;
+  p { 
+    margin: 20px 0 0;
   }
+
 </style>

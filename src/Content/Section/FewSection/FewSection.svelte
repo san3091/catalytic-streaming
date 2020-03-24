@@ -5,6 +5,7 @@
   import SoundCloudPlayer from '../SoundCloudPlayer/SoundCloudPlayer.svelte'
   export let albums
   export let headerText
+  export let sectionDescription
   export let loading
   export let selectAlbum
   export let selectedAlbum
@@ -15,6 +16,7 @@
 <div class='few-section'>
   <div class='left-content'>
     <h2>{headerText}</h2>
+    <p>{sectionDescription}</p>
     <div class='album-container'>
       <div class='albums' style='--width:{width}px'>
         {#each albums as album}

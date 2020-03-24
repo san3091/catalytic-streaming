@@ -4,6 +4,7 @@
   import FewSection from './FewSection/FewSection.svelte'
 
   export let headerText
+  export let sectionDescription
   export let sectionNumber
   export let albums = []
   export let open
@@ -40,6 +41,7 @@
   <ManySection 
     albums={albums}
     headerText={headerText}
+    sectionDescription={sectionDescription}
     loading={loading}
     selectAlbum={selectAlbum}
     selectedAlbum={selectedAlbum || albums[0]}
@@ -49,6 +51,7 @@
   <FewSection 
     albums={albums}
     headerText={headerText}
+    sectionDescription={sectionDescription}
     loading={loading}
     selectAlbum={selectAlbum}
     selectedAlbum={selectedAlbum || albums[0]} />

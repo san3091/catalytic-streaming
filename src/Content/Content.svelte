@@ -82,18 +82,21 @@
 <div class='content'>
   <Section
     headerText='Rotating Selection'
+    sectionDescription='Explore a rotating selection of free jazz. Find a new album every day.'
     sectionNumber={0}
     albums={albums}
     open={openStates[0]} 
     updateOpenStates={updateOpenStates} />
   <Section 
     headerText='Catalytic Artist Albums'
+    sectionDescription='Discover artists produced by Catalytic Sound'
     sectionNumber={1}
     albums={albums.slice(3, 22)}
     open={openStates[1]} 
     updateOpenStates={updateOpenStates} />
   <Section 
     headerText="History is What's Happening"
+    sectionDescription='Experience an artist curated selection of pre-2000s free jazz.'
     sectionNumber={2}
     albums={albums.slice(24, 29)}
     open={openStates[2]} 
