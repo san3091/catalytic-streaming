@@ -4,7 +4,7 @@
 
 <div class='header'>
   <div class='header-content'>
-    <h1>Catalytic Sound Streaming</h1>
+    <img src='/catalytic-sound-logo-(1)-WEB.png' alt='Catalytic Sound Logo' >
     <div class='header-right'>
       <Profile />
     </div>
@@ -26,6 +26,9 @@
     width: 1200px;
   }
 
+  img { 
+    height: 60px;
+  }
   .header-right {
     display: flex;
     flex-direction: row;

@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte'
+
   import Section from './Section/Section.svelte'
 
   const albumURLs = [
@@ -49,13 +50,14 @@
     return color
   }
 
+
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
       const color = albumColor(index)
       
       albums.push({ loading: true })
       SC.oEmbed(albumURLs[index], {color})
-      .then((newAlbum) => {
+      .then(newAlbum => {
         newAlbum.url = url
         newAlbum.color = color
         newAlbum.index = index
@@ -87,13 +89,13 @@
   <Section 
     headerText='Tag 1'
     sectionNumber={1}
-    albums={albums.slice(2, 8)}
+    albums={albums.slice(2, 18)}
     open={openStates[1]} 
     updateOpenStates={updateOpenStates} />
   <Section 
     headerText='Tag 2'
     sectionNumber={2}
-    albums={albums.slice(6, 18)}
+    albums={albums.slice(6, 37)}
     open={openStates[2]} 
     updateOpenStates={updateOpenStates} />
   <Section 
