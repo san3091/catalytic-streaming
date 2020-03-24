@@ -5,12 +5,11 @@
   import AlbumTile from '../../AlbumTile/AlbumTile.svelte'
 
   export let albums
-  export let headerText
   export let selectAlbum
   export let selectedAlbum
   let carouselWidth, itemsWidth
   let carouselOffset = tweened(0, { easing: cubicInOut })
-  $: slideDistance = (Math.floor(carouselWidth / 190) - 1) * 190
+  $: slideDistance = Math.floor(carouselWidth / 190) * 190
   $: overflowWidth = itemsWidth - carouselWidth
 
   const slideLeft = () => {
@@ -31,7 +30,6 @@
 </script>
 
 <div class='carousel-container'>
-  <h3>{headerText}</h3>
   <div 
     class='album-carousel'
     bind:clientWidth={carouselWidth}>
@@ -70,7 +68,7 @@
 
 <style>
   .carousel-container {
-    margin: 30px;
+    margin-bottom: 30px;
     width: 100%;
     max-width: 1200px;
   }
@@ -79,18 +77,15 @@
     position: relative;
     display: flex;
     overflow: hidden;
-    margin-bottom: 10px;
   }
 
   .carousel-items {
-    padding: 10px;
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    background-color: aliceblue;
     right: var(--carousel-offset);
   }
   

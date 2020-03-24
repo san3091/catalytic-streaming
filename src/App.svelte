@@ -12,6 +12,7 @@
 	:global(*) {
 		margin: 0;
 		padding: 0;
+		color: #3e3e3e;
 	}
 
 	:global(button) {
@@ -20,7 +21,12 @@
 	}
 
 	:global(h3) {
-		margin-bottom: 20px;
+		margin: 30px 0 15px;
+	}
+
+	:global(body) {
+		background-color: #DBDEDF;
+		padding: 0px;
 	}
 	
 	main {
@@ -29,5 +35,4 @@
 		align-items: center;
 		font-family: 'Raleway';
 	}
-	
 </style>

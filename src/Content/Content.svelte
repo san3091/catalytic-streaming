@@ -46,7 +46,7 @@
       color = '#FFFF00'
     } else if (index == albumURLs.length - 1) { 
       color = '#FF0000' 
-    } else { color = '#734f96' }
+    } 
     return color
   }
 

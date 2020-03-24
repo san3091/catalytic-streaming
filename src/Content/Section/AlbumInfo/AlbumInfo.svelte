@@ -26,7 +26,7 @@
 
   .info-content {
     padding: 20px;
-    border: 2px solid black;
+    border: 2px solid #222;
     background-color: hsl(0, 0%, 100%, 80%);
   }
 

@@ -12,7 +12,7 @@
       transition:fade
       class='album-tile'
       class:selected
-      style='--color:{album.color}'
+      style='--color:{album.color || "#a7a7a7"}'
       on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
@@ -61,7 +61,7 @@
   .album-tile::after {
     content: '';
     position: absolute;
-    background-color: black;
+    background-color: #222;
     opacity: 0;
     top: 6px;
     left: 6px;

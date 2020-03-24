@@ -27,16 +27,16 @@
         class='dont-miss button' 
         on:click={selectAlbum(lastAlbum.index, 0)}
       >
-      {#if lastAlbum }
-        <div class='quick-play-label' style='--color:{lastAlbum.color}'>
-          <h2>Don't Miss</h2>
-        </div>
-        <div class='button-content'>
-          <h2>{lastAlbum.title}</h2>
-          <p>{lastAlbum.author_name}</p>
-        </div>
-        <img transition:fade src={lastAlbum.thumbnail_url} />
-      {/if}
+        {#if lastAlbum }
+          <div class='quick-play-label' style='--color:{lastAlbum.color}'>
+            <h2>Don't Miss</h2>
+          </div>
+          <div class='button-content'>
+            <h2>{lastAlbum.title}</h2>
+            <p>{lastAlbum.author_name}</p>
+          </div>
+          <img transition:fade src={lastAlbum.thumbnail_url} />
+        {/if}
       </div>
       <div class='upcoming'>
         <div class='quick-play-label'>
@@ -51,8 +51,10 @@
   .banner-container {
     display: flex;
     justify-content: center;
-    background-color: slategray;
+    background-color: #222;
     width: 100%;
+    border: 1px solid #222;
+    margin-bottom: 30px;
   }
 
   .button {
@@ -60,6 +62,8 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #222;
   }
 
   .button-content {
@@ -114,9 +118,12 @@
   }
 
   .upcoming {
+    box-sizing: border-box;
     position: relative;
     height: 50%;
     background-color: aliceblue;
+    border: 1px solid #222;
+
   }
 
   .quick-play-label {
