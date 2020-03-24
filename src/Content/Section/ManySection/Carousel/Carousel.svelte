@@ -68,7 +68,7 @@
 
 <style>
   .carousel-container {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     width: 100%;
     max-width: 1200px;
   }

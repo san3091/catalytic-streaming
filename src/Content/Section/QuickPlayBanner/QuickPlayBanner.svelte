@@ -59,7 +59,7 @@
     background-color: #222;
     width: 100%;
     border: 1px solid #222;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .button {

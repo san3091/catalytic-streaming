@@ -28,7 +28,7 @@
   .current-album-container {
   	box-sizing: border-box;
     width: 100%;
-    padding: 0 30px 30px;
+    padding: 0 40px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@
   }
 
   .info-container {
-    padding-left: 30px;
+    padding-left: 40px;
     width: 50%;
   }
 </style>

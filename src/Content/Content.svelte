@@ -81,7 +81,7 @@
 
 <div class='content'>
   <Section
-    headerText='Rotating Seclection'
+    headerText='Rotating Selection'
     sectionNumber={0}
     albums={albums}
     open={openStates[0]} 

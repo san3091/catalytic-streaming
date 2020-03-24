@@ -62,10 +62,10 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 45px 30px 30px;
+    padding: 60px 40px 40px;
   }
 
   .info-container {
-    padding-bottom: 30px;
+    padding-bottom: 40px;
   }
 </style>
