@@ -40,7 +40,7 @@
 
 <style>
   .few-section {
-    margin: 20px 0 50px 0;
+    margin: 20px 0 20px 0;
     width: 1200px;
   }
 

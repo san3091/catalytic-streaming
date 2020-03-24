@@ -28,6 +28,6 @@
     flex-direction: column;
     align-items: center;
     width: 1200px;
-    margin: 20px 0 50px 0;
+    margin: 20px 0 20px 0;
   }
 </style>
