@@ -48,6 +48,11 @@
 </div>
 
 <style>
+
+  h2 {
+    margin: 0;
+  }
+
   .banner-container {
     display: flex;
     justify-content: center;

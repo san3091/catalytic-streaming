@@ -11,7 +11,7 @@
 </script>
 
 <div>
-  <h3>{headerText}</h3>
+  <h2>{headerText}</h2>
   <Carousel 
     albums={albums} 
     headerText={headerText}
@@ -25,7 +25,7 @@
 
 <style>
 
-  h3 {
+  h2 {
     align-self: flex-start;
   }
 

@@ -14,7 +14,7 @@
 
 <div class='few-section'>
   <div class='left-content'>
-    <h3>{headerText}</h3>
+    <h2>{headerText}</h2>
     <div class='album-container'>
       <div class='albums' style='--width:{width}px'>
         {#each albums as album}

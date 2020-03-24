@@ -10,7 +10,7 @@
       transition:fade
       style='--color:{album.color}'
       >
-      <h1>{album.title}</h1>
+      <h3>{album.title}</h3>
       <h4>{album.author_name}</h4>
       <p>
         {album.description}

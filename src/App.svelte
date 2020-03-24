@@ -20,7 +20,7 @@
 		padding: 0;
 	}
 
-	:global(h3) {
+	:global(h2) {
 		margin: 30px 0 15px;
 	}
 
