@@ -12,8 +12,10 @@
   let loading
   let selectedAlbum
 
-  $: firstAlbum = albums[0]
+  $: firstAlbum = albums[1]
   $: lastAlbum = albums[albums.length - 1]
+  $: tomorrowAlbum = albums[0]
+  $: sectionAlbums = sectionNumber == 0 ? albums.slice(1) : albums
 
   const selectAlbum = (albumIndex) => {
     loading = true
@@ -35,26 +37,26 @@
   <QuickPlayBanner 
   selectAlbum={selectAlbum}
   firstAlbum={firstAlbum}
-  lastAlbum={lastAlbum}/>
+  lastAlbum={lastAlbum}
+  tomorrowAlbum={tomorrowAlbum} />
 {/if}
 {#if albums.length > 6}
   <ManySection 
-    albums={albums}
+    albums={sectionAlbums}
     headerText={headerText}
     sectionDescription={sectionDescription}
     loading={loading}
     selectAlbum={selectAlbum}
-    selectedAlbum={selectedAlbum || albums[0]}
-    open={open}
-  />
+    selectedAlbum={selectedAlbum || sectionAlbums[0]}
+    open={open} />
 {:else}
   <FewSection 
-    albums={albums}
+    albums={sectionAlbums}
     headerText={headerText}
     sectionDescription={sectionDescription}
     loading={loading}
     selectAlbum={selectAlbum}
-    selectedAlbum={selectedAlbum || albums[0]} />
+    selectedAlbum={selectedAlbum || sectionAlbums[0]} />
 {/if}
 
 <style>

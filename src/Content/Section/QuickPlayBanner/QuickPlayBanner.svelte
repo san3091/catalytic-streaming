@@ -3,6 +3,7 @@
   export let selectAlbum
   export let firstAlbum
   export let lastAlbum
+  export let tomorrowAlbum
 </script>
 
 <div class='banner-container'>
@@ -15,7 +16,7 @@
         <div class='quick-play-label' style='--color:{firstAlbum.color}'>
           <h2>New Today</h2>
         </div>
-        <div class='button-content'>
+        <div class='section-content button-content'>
           <h2>{firstAlbum.title}</h2>
           <p>{firstAlbum.author_name}</p>
         </div>
@@ -27,11 +28,11 @@
         class='dont-miss button' 
         on:click={selectAlbum(lastAlbum.index, 0)}
       >
-        {#if lastAlbum }
+        {#if lastAlbum}
           <div class='quick-play-label' style='--color:{lastAlbum.color}'>
             <h2>Don't Miss</h2>
           </div>
-          <div class='button-content'>
+          <div class='section-content button-content'>
             <h2>{lastAlbum.title}</h2>
             <p>{lastAlbum.author_name}</p>
           </div>
@@ -39,9 +40,19 @@
         {/if}
       </div>
       <div class='upcoming'>
-        <div class='quick-play-label'>
-          <h2>Tomorrow</h2>
-        </div>
+        {#if tomorrowAlbum}
+          <div class='quick-play-label'>
+            <h2>Tomorrow</h2>
+          </div>
+          <div class='section-content'>
+            <h2>{tomorrowAlbum.title}</h2>
+            <p>{tomorrowAlbum.author_name}</p>
+          </div>
+          <img 
+            transition:fade
+            class='tomorrow-album-img'
+            src={tomorrowAlbum.thumbnail_url} />
+        {/if}
       </div>
     </div>
   </div>
@@ -72,22 +83,42 @@
   }
 
   .button-content {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    padding: 20px;
     background: linear-gradient(0deg, hsl(0, 0%, 0%, 60%), hsl(0, 0%, 0%, 0%));
   }
 
   .button-content * {
     color: white;
+  }
+  
+  .section-content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+  }
+
+  .section-content * {
     margin: 0;
+  }
+
+  .section-content h2 {
+    width: 370px;
   }
 
   img {
     width: 100%;
     z-index: -3;
+  }
+
+
+  .tomorrow-album-img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    height: 180px;
+    width: 180px;
   }
 
  .quick-play-banner {
@@ -126,7 +157,7 @@
     box-sizing: border-box;
     position: relative;
     height: 50%;
-    background-color: aliceblue;
+    background-color: #f96854;
     border: 1px solid #222;
 
   }

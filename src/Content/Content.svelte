@@ -4,7 +4,7 @@
   import Section from './Section/Section.svelte'
 
   const albumURLs = [
-    // 'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
+    'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
     'https://soundcloud.com/playlist/sets/love-hurts',
     'https://soundcloud.com/soundcloud-hustle/sets/hip-hop-party-starters',
     'https://soundcloud.com/soundcloud-hustle/sets/hip-hop-love-songs',
@@ -42,7 +42,7 @@
 
   const albumColor = (index) => {
     let color 
-    if (index == 0) { 
+    if (index == 1) { 
       color = '#FFFF00'
     } else if (index == albumURLs.length - 1) { 
       color = '#FF0000' 
@@ -89,7 +89,7 @@
     updateOpenStates={updateOpenStates} />
   <Section 
     headerText='Catalytic Artist Albums'
-    sectionDescription='Discover artists produced by Catalytic Sound'
+    sectionDescription='Discover artists represented by Catalytic Sound.'
     sectionNumber={1}
     albums={albums.slice(3, 22)}
     open={openStates[1]} 
