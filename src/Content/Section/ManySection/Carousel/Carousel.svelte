@@ -10,6 +10,11 @@
   export let selectedAlbum
   let carouselWidth, itemsWidth
   let carouselOffset = tweened(0, { easing: cubicInOut })
+
+  const slideToEnd = () => {
+    carouselOffset.set(overflowWidth)
+  }
+  $: if (selectedAlbum.index == albums.length) { slideToEnd() }
   $: slideDistance = Math.floor(carouselWidth / 190) * 190
   $: overflowWidth = itemsWidth - carouselWidth
  
@@ -25,7 +30,7 @@
     const nextOffset = $carouselOffset + slideDistance
 
     overflowWidth < nextOffset
-      ? carouselOffset.set(overflowWidth)
+      ? slideToEnd()
       : carouselOffset.set(nextOffset)
   }
 </script>
