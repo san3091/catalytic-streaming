@@ -8,7 +8,6 @@
     <div 
       class='info-content' 
       transition:fade
-      style='--color:{album.color}'
       >
       <h3>{album.title}</h3>
       <h4>{album.author_name}</h4>

@@ -3,6 +3,7 @@
   import { cubicInOut } from 'svelte/easing'
   import { fade } from 'svelte/transition'
   import AlbumTile from '../../AlbumTile/AlbumTile.svelte'
+  import ProgressIndicator from './ProgressIndicator/ProgressIndicator.svelte'
 
   export let albums
   export let selectAlbum
@@ -11,7 +12,7 @@
   let carouselOffset = tweened(0, { easing: cubicInOut })
   $: slideDistance = Math.floor(carouselWidth / 190) * 190
   $: overflowWidth = itemsWidth - carouselWidth
-
+ 
   const slideLeft = () => {
     const nextOffset = $carouselOffset - slideDistance
 
@@ -30,6 +31,10 @@
 </script>
 
 <div class='carousel-container'>
+  <ProgressIndicator 
+    itemsWidth={itemsWidth}
+    slideDistance={slideDistance}
+    carouselOffset={$carouselOffset} />
   <div 
     class='album-carousel'
     bind:clientWidth={carouselWidth}>
@@ -68,11 +73,12 @@
 
 <style>
   .carousel-container {
+    position: relative;
     margin-bottom: 40px;
     width: 100%;
     max-width: 1200px;
   }
-
+  
   .album-carousel {
     position: relative;
     display: flex;
