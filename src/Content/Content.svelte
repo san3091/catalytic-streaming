@@ -38,7 +38,7 @@
   ]
 
   let albums = []
-  let openStates = [true, false, false]
+  let openStates = [false, false, false]
 
   const albumColor = (index) => {
     let color 
