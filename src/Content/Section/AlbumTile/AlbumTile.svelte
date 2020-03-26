@@ -12,7 +12,7 @@
       transition:fade
       class='album-tile'
       class:selected
-      style='--color:{album.color || "#dbdedf"}'
+      style='--color:{album.color || "#666a86"}'
       on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
@@ -38,19 +38,7 @@
     flex-direction: column;
     width: 200px;
     cursor: pointer;
-    background-color: #444444;
-  }
-
-  .album-tile::before {
-    content: '';
-    position: absolute;
     background-color: var(--color);
-    top: 3px;
-    left: 3px;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    animation: fade-in 1s ease-in;
   }
   
   .album-tile::after {
@@ -58,8 +46,8 @@
     position: absolute;
     background-color: #222;
     opacity: 0;
-    top: 6px;
-    left: 6px;
+    top: 4px;
+    left: 4px;
     height: 100%;
     width: 100%;
     z-index: -2;
@@ -70,11 +58,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 100%;
     padding: 10px;
+    background-color: hsl(0, 0%, 0%, 50%);
   }
 
   .album-info * {
-    color: #DBDEDF;
+    color: #dbdedf;
   }
   
   img {
@@ -88,8 +78,8 @@
   }
 
   .album-tile:hover::after {
-    top: 8px;
-    left: 8px;
+    top: 6px;
+    left: 6px;
   }
 
   .selected, .album-tile.selected:hover {
@@ -98,17 +88,17 @@
   }
 
   .selected::after, .album-tile.selected:hover::after {
-    top: 10px;
-    left: 10px;
+    top: 8px;
+    left: 8px;
   }
 
   @keyframes fade-in {
     0% {
       opacity: 0;
-      background-color: white;
+      background-color: transparent;
     }
     50% {
-      background-color: white;
+      background-color: transparent;
     }
     100% {
       opacity: 1;

@@ -52,7 +52,7 @@
   const hwhAlbums = (albums) => {
     const albumsCopy = albums.slice(24, 29).map(album => {
       const albumCopy = Object.assign({}, album)
-      albumCopy.color = "#e6b89c"
+      albumCopy.color = "#be3e82"
       return albumCopy
     })
     return albumsCopy
