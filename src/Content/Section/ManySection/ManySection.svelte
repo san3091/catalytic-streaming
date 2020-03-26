@@ -36,6 +36,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0 150px;
+    padding: 0 100px;
   }
 </style>

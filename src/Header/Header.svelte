@@ -15,18 +15,20 @@
 
 <style>
   .header {
+    position: sticky;
+    top: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: hsl(0, 0%, 100%, 80%);
-    margin-bottom: 20px;
+    z-index: 3;
+    border-bottom: 1px solid #3e3e3e;
   }
 
   .header-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 150px;
+    padding: 0 50px;
     width: 100%;
   }
 

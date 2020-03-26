@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
 
   import Section from './Section/Section.svelte'
+  import Player from './Player/Player.svelte'
 
   const albumURLs = [
     'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
@@ -60,13 +61,10 @@
 
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
-      // const color = albumColor(index)
-      
       albums.push({ loading: true })
       SC.oEmbed(albumURLs[index])
       .then(newAlbum => {
         newAlbum.url = url
-        // newAlbum.color = color
         newAlbum.index = index
         albums[index] = newAlbum
       })
@@ -87,35 +85,55 @@
 </script>
 
 <div class='content'>
-  <Section
-    headerText='Rotating Selection'
-    sectionDescription='Explore a rotating selection of free jazz. Find a new album every day.'
-    sectionNumber={0}
-    albums={albums}
-    open={openStates[0]} 
-    updateOpenStates={updateOpenStates} />
-  <Section 
-    headerText='Catalytic Artist Albums'
-    sectionDescription='Discover artists represented by Catalytic Sound.'
-    sectionNumber={1}
-    albums={caaAlbums(albums)}
-    open={openStates[1]} 
-    updateOpenStates={updateOpenStates} />
-  <Section 
-    headerText="History is What's Happening"
-    sectionDescription='Experience an artist curated selection of pre-2000s free jazz.'
-    sectionNumber={2}
-    albums={hwhAlbums(albums)}
-    open={openStates[2]} 
-    updateOpenStates={updateOpenStates} />
+  <div class='music-selection'> 
+    <Section
+      headerText='Rotating Selection'
+      sectionDescription='Explore a rotating selection of free jazz. Find a new album every day.'
+      sectionNumber={0}
+      albums={albums}
+      open={openStates[0]} 
+      updateOpenStates={updateOpenStates} />
+    <Section 
+      headerText='Catalytic Artist Albums'
+      sectionDescription='Discover artists represented by Catalytic Sound.'
+      sectionNumber={1}
+      albums={caaAlbums(albums)}
+      open={openStates[1]} 
+      updateOpenStates={updateOpenStates} />
+    <Section 
+      headerText="History is What's Happening"
+      sectionDescription='Experience an artist curated selection of pre-2000s free jazz.'
+      sectionNumber={2}
+      albums={hwhAlbums(albums)}
+      open={openStates[2]} 
+      updateOpenStates={updateOpenStates} />
+    <div class='footer'></div>
+  </div>
+  <Player />
 </div>
 
 <style>
   .content {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    height: calc(100vh - 60px);
+
+  }
+
+  .music-selection {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  .footer {
+    display: inline-block;
+    position: relative;
+    min-height: 150px;
     width: 100%;
   }
 </style>

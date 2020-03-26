@@ -38,6 +38,5 @@
 		flex-direction: column;
 		align-items: center;
 		font-family: 'Raleway';
-		margin-bottom: 120px;
 	}
 </style>
