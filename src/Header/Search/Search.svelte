@@ -3,7 +3,7 @@
 
 <div class='search'>
   <i class='material-icons'>search</i>
-  <input type='text' />
+  <input type='text' placeholder='search' />
 </div>
 
 <style>
@@ -13,7 +13,7 @@
     align-items: center;
     height: 40px;
     width: 250px;
-    background-color: #DBDEDF;
+    background-color: #3e3e3e;
     margin: 10px 20px;
   }
 
@@ -22,6 +22,7 @@
     margin: 10px;
     z-index: 1;
     align-self: flex-start;
+    color: #DBDEDF;
   }
 
   input {
@@ -31,6 +32,6 @@
     width: 100%;
     background-color: transparent;
     border: none;
-    /* text-align: right; */
+    color: #DBDEDF;
   }
 </style>
