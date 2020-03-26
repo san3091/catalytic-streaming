@@ -40,12 +40,32 @@
   let albums = []
   let openStates = [false, false, false]
 
+  const caaAlbums = (albums) => {
+    const albumsCopy = albums.slice(3, 22).map(album => {
+      const albumCopy = Object.assign({}, album)
+      albumCopy.color = "#f96854"
+      return albumCopy
+    })
+    return albumsCopy
+  }
+  
+  const hwhAlbums = (albums) => {
+    const albumsCopy = albums.slice(24, 29).map(album => {
+      const albumCopy = Object.assign({}, album)
+      albumCopy.color = "#e6b89c"
+      return albumCopy
+    })
+    return albumsCopy
+  }
+
   const albumColor = (index) => {
     let color 
     if (index == 1) { 
-      color = '#FFFF00'
+      color = '#e5e059'
+      // color = '#FFFF00'
     } else if (index == albumURLs.length - 1) { 
-      color = '#FF0000' 
+      color = '#be3e82' 
+      // color = '#FF0000' 
     } 
     return color
   }
@@ -91,14 +111,14 @@
     headerText='Catalytic Artist Albums'
     sectionDescription='Discover artists represented by Catalytic Sound.'
     sectionNumber={1}
-    albums={albums.slice(3, 22)}
+    albums={caaAlbums(albums)}
     open={openStates[1]} 
     updateOpenStates={updateOpenStates} />
   <Section 
     headerText="History is What's Happening"
     sectionDescription='Experience an artist curated selection of pre-2000s free jazz.'
     sectionNumber={2}
-    albums={albums.slice(24, 29)}
+    albums={hwhAlbums(albums)}
     open={openStates[2]} 
     updateOpenStates={updateOpenStates} />
 </div>

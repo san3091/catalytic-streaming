@@ -14,6 +14,7 @@
   const slideToEnd = () => {
     carouselOffset.set(overflowWidth)
   }
+  
   $: if (selectedAlbum.index == albums.length) { slideToEnd() }
   $: slideDistance = Math.floor(carouselWidth / 190) * 190
   $: overflowWidth = itemsWidth - carouselWidth
