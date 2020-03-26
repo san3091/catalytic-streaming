@@ -1,4 +1,5 @@
 <script>
+  import Search from './Search/Search.svelte'
   import Profile from './Profile/Profile.svelte'
 </script>
 
@@ -6,6 +7,7 @@
   <div class='header-content'>
     <img src='/catalytic-sound-logo-(1)-WEB.png' alt='Catalytic Sound Logo' >
     <div class='header-right'>
+      <Search />
       <Profile />
     </div>
   </div>
@@ -34,5 +36,6 @@
   .header-right {
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 </style>
