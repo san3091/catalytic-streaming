@@ -43,7 +43,7 @@
   const caaAlbums = (albums) => {
     const albumsCopy = albums.slice(3, 22).map(album => {
       const albumCopy = Object.assign({}, album)
-      albumCopy.color = "#f96854"
+      albumCopy.color = "#588b8b"
       return albumCopy
     })
     return albumsCopy
@@ -58,28 +58,15 @@
     return albumsCopy
   }
 
-  const albumColor = (index) => {
-    let color 
-    if (index == 1) { 
-      color = '#e5e059'
-      // color = '#FFFF00'
-    } else if (index == albumURLs.length - 1) { 
-      color = '#be3e82' 
-      // color = '#FF0000' 
-    } 
-    return color
-  }
-
-
   const loadAlbumData = (index=0) => {
     albumURLs.forEach((url, index) => {
-      const color = albumColor(index)
+      // const color = albumColor(index)
       
       albums.push({ loading: true })
-      SC.oEmbed(albumURLs[index], {color})
+      SC.oEmbed(albumURLs[index])
       .then(newAlbum => {
         newAlbum.url = url
-        newAlbum.color = color
+        // newAlbum.color = color
         newAlbum.index = index
         albums[index] = newAlbum
       })
