@@ -28,13 +28,14 @@
 <style>
 
   h2, p {
-    align-self: flex-start;
+    margin-left: 50px;
   }
 
   div {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 1200px;
+    width: 100%;
+    padding: 0 150px;
   }
 </style>

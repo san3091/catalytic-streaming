@@ -19,13 +19,15 @@
     display: flex;
     justify-content: center;
     background-color: hsl(0, 0%, 100%, 80%);
+    margin-bottom: 20px;
   }
 
   .header-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1200px;
+    padding: 0 150px;
+    width: 100%;
   }
 
   img { 

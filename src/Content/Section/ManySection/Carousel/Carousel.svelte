@@ -86,7 +86,6 @@
     position: relative;
     margin-bottom: 40px;
     width: 100%;
-    max-width: 1200px;
   }
   
   .album-carousel {

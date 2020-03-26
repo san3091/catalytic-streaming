@@ -21,7 +21,7 @@
 	}
 
 	:global(h2) {
-		margin: 40px 0 10px;
+		margin: 50px 0 10px;
 	}
 
 	:global(p) {
