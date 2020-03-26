@@ -33,14 +33,8 @@
   }
 </script>
 
-{#if sectionNumber == 0}
-  <QuickPlayBanner 
-  selectAlbum={selectAlbum}
-  firstAlbum={firstAlbum}
-  lastAlbum={lastAlbum}
-  tomorrowAlbum={tomorrowAlbum} />
-{/if}
-{#if albums.length > 6}
+
+{#if albums.length}
   <ManySection 
     albums={sectionAlbums}
     headerText={headerText}
@@ -49,15 +43,8 @@
     selectAlbum={selectAlbum}
     selectedAlbum={selectedAlbum || sectionAlbums[0]}
     open={open} />
-{:else}
-  <FewSection 
-    albums={sectionAlbums}
-    headerText={headerText}
-    sectionDescription={sectionDescription}
-    loading={loading}
-    selectAlbum={selectAlbum}
-    selectedAlbum={selectedAlbum || sectionAlbums[0]} />
-{/if}
+
+{/if} 
 
 <style>
 </style>

@@ -29,7 +29,7 @@
 	}
 
 	:global(body) {
-		background-color: #DBDEDF;
+		background-color: #f96854;
 		padding: 0px;
 	}
 	

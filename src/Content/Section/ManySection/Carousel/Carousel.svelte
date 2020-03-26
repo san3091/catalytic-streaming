@@ -15,8 +15,9 @@
     carouselOffset.set(overflowWidth)
   }
   
+  $: scrollable = itemsWidth > carouselWidth
   $: if (selectedAlbum.index == albums.length) { slideToEnd() }
-  $: slideDistance = Math.floor(carouselWidth / 190) * 190
+  $: slideDistance = Math.floor(carouselWidth / 220) * 220
   $: overflowWidth = itemsWidth - carouselWidth
  
   const slideLeft = () => {
@@ -37,12 +38,15 @@
 </script>
 
 <div class='carousel-container'>
-  <ProgressIndicator 
-    itemsWidth={itemsWidth}
-    slideDistance={slideDistance}
-    carouselOffset={$carouselOffset} />
+  {#if scrollable }
+    <ProgressIndicator 
+      itemsWidth={itemsWidth}
+      slideDistance={slideDistance}
+      carouselOffset={$carouselOffset} />
+  {/if}
   <div 
     class='album-carousel'
+    class:scrollable
     bind:clientWidth={carouselWidth}>
     {#if $carouselOffset}
       <button 
@@ -95,9 +99,6 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
     right: var(--carousel-offset);
   }
   
@@ -126,11 +127,11 @@
     font-size: 48px;
   }
  
-  .album-carousel:hover button {
+  .scrollable:hover button {
     animation: visible .4s ease-out forwards, lighten .4s ease-out forwards
   }
 
-  .album-carousel:hover button:hover {
+  .scrollable:hover button:hover {
     animation: darken .4s ease-out forwards, visible .4s ease-out forwards;
   }
 

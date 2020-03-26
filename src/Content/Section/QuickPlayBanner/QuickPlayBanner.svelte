@@ -157,7 +157,7 @@
     box-sizing: border-box;
     position: relative;
     height: 50%;
-    background-color: #f96854;
+		background-color: #DBDEDF;
     border: 1px solid #222;
 
   }

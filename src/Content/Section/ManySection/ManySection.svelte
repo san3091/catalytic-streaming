@@ -18,9 +18,9 @@
     albums={albums} 
     headerText={headerText}
     selectAlbum={selectAlbum} 
-    selectedAlbum={selectedAlbum || albums[0]} />
+    selectedAlbum={selectedAlbum} />
   <CurrentAlbum 
-    selectedAlbum={selectedAlbum || albums[0]} 
+    selectedAlbum={selectedAlbum} 
     open={open}
     loading={loading} />
 </div>

@@ -12,7 +12,7 @@
       transition:fade
       class='album-tile'
       class:selected
-      style='--color:{album.color || "#a7a7a7"}'
+      style='--color:{album.color || "#dbdedf"}'
       on:click={ selectAlbum(album.index) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
@@ -30,20 +30,15 @@
     display: flex;
     z-index: 1;
     margin: 10px;
-    margin-bottom: 35px;
-    height: 220px;
-    width: 170px;
-    background-color: white;
+    margin-bottom: 15px;
   }
 
   .album-tile {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
     cursor: pointer;
-    background-color: white;
+    background-color: #444444;
   }
 
   .album-tile::before {
@@ -77,10 +72,14 @@
     align-items: flex-start;
     padding: 10px;
   }
+
+  .album-info * {
+    color: #DBDEDF;
+  }
   
   img {
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
   }
 
   .album-tile:hover{

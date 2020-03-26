@@ -4,7 +4,7 @@
   export let carouselOffset
 
   let numberOfSections = 0
-  let defaultDashColor = "#a7a7a7"
+  let defaultDashColor = "#dbdedf"
   let activeDashColor = "#3e3e3e"
 
   const iterableDashes = (numberOfSections) => {
