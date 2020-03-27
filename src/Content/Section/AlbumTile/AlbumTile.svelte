@@ -13,7 +13,7 @@
       class='album-tile'
       class:selected
       style='--color:{album.color || "#666a86"}'
-      on:click={ selectAlbum(album.index) } >
+      on:click={ selectAlbum(album) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
         <h5>{album.title}</h5>

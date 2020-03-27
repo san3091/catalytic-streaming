@@ -113,11 +113,13 @@
   
   .previous-button{
     left: 0;
+    /* background: linear-gradient(-90deg, hsl(0, 0%, 0%, 0%), rgb(249, 104, 84, 0.4)); */
     background: linear-gradient(-90deg, hsl(0, 0%, 0%, 0%), hsl(0, 0%, 0%, 40%));
   }
 
   .next-button {
     right: 0;
+    /* background: linear-gradient(90deg, hsl(0, 0%, 0%, 0%), rgb(249, 104, 84, 0.4)); */
     background: linear-gradient(90deg, hsl(0, 0%, 0%, 0%), hsl(0, 0%, 0%, 40%));
   }
 

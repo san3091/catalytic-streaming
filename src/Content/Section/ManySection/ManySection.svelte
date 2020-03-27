@@ -1,6 +1,5 @@
 <script>
   import Carousel from './Carousel/Carousel.svelte'
-  import CurrentAlbum from './CurrentAlbum/CurrentAlbum.svelte'
 
   export let albums
   export let headerText
@@ -19,10 +18,6 @@
     headerText={headerText}
     selectAlbum={selectAlbum} 
     selectedAlbum={selectedAlbum} />
-  <CurrentAlbum 
-    selectedAlbum={selectedAlbum} 
-    open={open}
-    loading={loading} />
 </div>
 
 <style>

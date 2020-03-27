@@ -9,10 +9,15 @@
 </main>
 
 <style>
+	main {
+		--medium-grey: #3e3e3e;
+	}
+
 	:global(*) {
 		margin: 0;
 		padding: 0;
 		color: #3e3e3e;
+		/* color: #dbdedf; */
 	}
 
 	:global(button) {
@@ -29,6 +34,7 @@
 	}
 
 	:global(body) {
+		/* background-color: #3e3e3e; */
 		background-color: #f96854;
 		padding: 0px;
 	}

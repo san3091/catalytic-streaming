@@ -6,6 +6,7 @@
   let numberOfSections = 0
   let defaultDashColor = "#dbdedf"
   let activeDashColor = "#3e3e3e"
+  // let activeDashColor = "#f96854"
 
   const iterableDashes = (numberOfSections) => {
     return [...Array(numberOfSections).keys()]

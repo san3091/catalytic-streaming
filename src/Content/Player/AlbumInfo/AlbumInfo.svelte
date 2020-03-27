@@ -23,6 +23,7 @@
 <style>
   .info-container {
     width: 100%;
+    margin-bottom: 50px;
   }
 
   .info-content {

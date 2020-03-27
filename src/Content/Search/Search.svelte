@@ -1,4 +1,7 @@
 <script>
+  import { tweened } from 'svelte/motion'
+  import { cubicOut } from 'svelte/easing'
+  import { playerOpen } from '../../stores.js'
 </script>
 
 <div class='search'>
@@ -9,12 +12,14 @@
 <style>
   .search {
     position: relative;
+    align-self: flex-end;
+    margin: 50px 100px -50px 0 ;
     display: flex;
     align-items: center;
-    height: 40px;
+    min-height: 40px;
     width: 250px;
+    /* background-color: #dbdedf; */
     background-color: #3e3e3e;
-    margin: 10px 20px;
   }
 
   i {
@@ -22,6 +27,7 @@
     margin: 10px;
     z-index: 1;
     align-self: flex-start;
+    /* color: #3e3e3e; */
     color: #DBDEDF;
   }
 
@@ -31,7 +37,8 @@
     padding-left: 40px;
     width: 100%;
     background-color: transparent;
-    border: none;
     color: #DBDEDF;
+    border: none;
+    /* color: var(--medium-grey); */
   }
 </style>

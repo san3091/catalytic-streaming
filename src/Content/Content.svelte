@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte'
 
+  import Search from './Search/Search.svelte'
   import Section from './Section/Section.svelte'
   import Player from './Player/Player.svelte'
-
+  import { playerOpen } from '../stores.js'
+  
   const albumURLs = [
     'https://soundcloud.com/user-861231864/sets/streaming-test-1/s-q4DAH',
     'https://soundcloud.com/playlist/sets/love-hurts',
@@ -39,7 +41,7 @@
   ]
 
   let albums = []
-  let openStates = [false, false, false]
+  let selectedAlbum
 
   const caaAlbums = (albums) => {
     const albumsCopy = albums.slice(3, 22).map(album => {
@@ -71,12 +73,9 @@
     })
   }
 
-  const updateOpenStates = (sectionNumber) => {
-    openStates.forEach((state, index) => { 
-      index == sectionNumber
-       ? openStates[index] = true
-       : openStates[index] = false
-    })
+  const selectAlbum = (album) => {
+    playerOpen.set(true)
+    selectedAlbum = album
   }
 
   onMount(() => {
@@ -86,30 +85,31 @@
 
 <div class='content'>
   <div class='music-selection'> 
+    <Search />
     <Section
       headerText='Rotating Selection'
       sectionDescription='Explore a rotating selection of free jazz. Find a new album every day.'
       sectionNumber={0}
-      albums={albums}
-      open={openStates[0]} 
-      updateOpenStates={updateOpenStates} />
+      selectAlbum={selectAlbum}
+      selectedAlbum={selectedAlbum || albums[1]}
+      albums={albums} />
     <Section 
       headerText='Catalytic Artist Albums'
       sectionDescription='Discover artists represented by Catalytic Sound.'
       sectionNumber={1}
-      albums={caaAlbums(albums)}
-      open={openStates[1]} 
-      updateOpenStates={updateOpenStates} />
+      selectAlbum={selectAlbum}
+      selectedAlbum={selectedAlbum || albums[1]}
+      albums={caaAlbums(albums)} />
     <Section 
       headerText="History is What's Happening"
       sectionDescription='Experience an artist curated selection of pre-2000s free jazz.'
       sectionNumber={2}
-      albums={hwhAlbums(albums)}
-      open={openStates[2]} 
-      updateOpenStates={updateOpenStates} />
+      selectAlbum={selectAlbum}
+      selectedAlbum={selectedAlbum || albums[1]}
+      albums={hwhAlbums(albums)} />
     <div class='footer'></div>
   </div>
-  <Player />
+  <Player selectedAlbum={selectedAlbum || albums[1]} />
 </div>
 
 <style>
@@ -119,13 +119,11 @@
     justify-content: center;
     width: 100%;
     height: calc(100vh - 60px);
-
   }
 
   .music-selection {
     display: flex;
     flex-direction:column;
-    align-items: center;
     width: 100%;
     overflow-y: scroll;
   }
