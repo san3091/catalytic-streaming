@@ -1,29 +1,16 @@
 <script>
-  export let itemsWidth
-  export let slideDistance
-  export let carouselOffset
+  export let numberOfSections
+  export let currentSection
 
-  let numberOfSections = 0
   let defaultDashColor = "#dbdedf"
   let activeDashColor = "#3e3e3e"
-  // let activeDashColor = "#f96854"
 
   const iterableDashes = (numberOfSections) => {
     return [...Array(numberOfSections).keys()]
   }
 
-  const calcSections = (itemsWidth, slideDistance) => {
-    let sections = 0
-    if (itemsWidth && slideDistance) {
-      sections = Math.ceil(itemsWidth / slideDistance)
-    }
-    return sections
-  }
-
-  $: numberOfSections = calcSections(itemsWidth, slideDistance)
   $: indicatorLength = numberOfSections * 30 + 10
   $: dashes = iterableDashes(numberOfSections)
-  $: currentSection = Math.ceil(carouselOffset / slideDistance)
 </script>
 
 <svg viewBox="0 0 {indicatorLength} 20" class='progress-indicator' style='--width:{indicatorLength}'>

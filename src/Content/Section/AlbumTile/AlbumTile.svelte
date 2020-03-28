@@ -4,10 +4,11 @@
   export let album
   export let selectAlbum
   export let selected
+  export let tileWidth
 </script>
 
-<div class='tile-container'>
-  {#if !album.loading}
+<div class='tile-container' style='--size:{tileWidth - 20}px'>
+  {#if !album.loading && tileWidth}
     <div 
       transition:fade
       class='album-tile'
@@ -36,7 +37,7 @@
   .album-tile {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: var(--size);
     cursor: pointer;
     background-color: var(--color);
   }
@@ -68,8 +69,7 @@
   }
   
   img {
-    height: 200px;
-    width: 200px;
+    height: var(--size);
   }
 
   .album-tile:hover{

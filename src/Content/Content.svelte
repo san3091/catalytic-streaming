@@ -122,6 +122,8 @@
   }
 
   .music-selection {
+    position: relative;
+    padding-top: 50px;
     display: flex;
     flex-direction:column;
     width: 100%;

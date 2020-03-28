@@ -4,10 +4,8 @@
   export let albums
   export let headerText
   export let sectionDescription
-  export let loading
   export let selectAlbum
   export let selectedAlbum
-  export let open
 </script>
 
 <div>
@@ -15,7 +13,6 @@
   <p>{sectionDescription}</p>
   <Carousel 
     albums={albums} 
-    headerText={headerText}
     selectAlbum={selectAlbum} 
     selectedAlbum={selectedAlbum} />
 </div>

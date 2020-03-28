@@ -50,6 +50,7 @@
     min-width: var(--width);
     max-width: var(--width);
     border-left: 1px solid #3e3e3e;
+    overflow-y: scroll;
   }
 
   .player-content {

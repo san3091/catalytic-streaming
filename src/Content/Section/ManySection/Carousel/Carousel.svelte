@@ -1,6 +1,6 @@
 <script>
   import { tweened } from 'svelte/motion'
-  import { cubicInOut } from 'svelte/easing'
+  import { cubicOut } from 'svelte/easing'
   import { fade } from 'svelte/transition'
   import AlbumTile from '../../AlbumTile/AlbumTile.svelte'
   import ProgressIndicator from './ProgressIndicator/ProgressIndicator.svelte'
@@ -8,51 +8,70 @@
   export let albums
   export let selectAlbum
   export let selectedAlbum
+
   let carouselWidth, itemsWidth
-  let carouselOffset = tweened(0, { easing: cubicInOut })
+  let currentSection = 0
+  let resizing = false
+  let carouselOffset = tweened(0, { easing: cubicOut })
+  let tileWidth = tweened(0, { easing: cubicOut, duration: 400 })
 
-  const slideToEnd = () => {
-    carouselOffset.set(overflowWidth)
+  const scroll = (currentSection, widthChange=false) => {
+    if (scrollable) {
+      const newScrollPosition = currentSection * carouselWidth
+      
+      if ((newScrollPosition + carouselWidth) > itemsWidth) {
+          carouselOffset.set(itemsWidth - carouselWidth)
+      } else {
+        carouselOffset.set(currentSection * carouselWidth)
+      }
+    }
   }
-  
+
+  const calcSections = (itemsWidth) => {
+    let sections = 0
+    if (itemsWidth && carouselWidth) {
+      sections = Math.ceil(itemsWidth / carouselWidth)
+    }
+    return sections
+  }
+
+  const previousSection = () => {
+    if (currentSection > 0) { currentSection -= 1 }
+    scroll(currentSection)
+  }
+
+  const nextSection = () => {
+    if (currentSection < numberOfSections) { currentSection += 1 }
+    scroll(currentSection)
+  }
+
+  const resizeTiles = async (carouselWidth) => {
+    resizing = true
+    await tileWidth.set((carouselWidth / 6))
+    resizing = false
+  }
+
   $: scrollable = itemsWidth > carouselWidth
-  $: if (selectedAlbum.index == albums.length) { slideToEnd() }
-  $: slideDistance = Math.floor(carouselWidth / 220) * 220
-  $: overflowWidth = itemsWidth - carouselWidth
- 
-  const slideLeft = () => {
-    const nextOffset = $carouselOffset - slideDistance
-
-    nextOffset > 0
-      ? carouselOffset.set(nextOffset)
-      : carouselOffset.set(0)
-  }
-
-  const slideRight = () => {
-    const nextOffset = $carouselOffset + slideDistance
-
-    overflowWidth < nextOffset
-      ? slideToEnd()
-      : carouselOffset.set(nextOffset)
-  }
+  $: resizeTiles(carouselWidth)
+  $: numberOfSections = calcSections(itemsWidth)
+  $: if (carouselWidth || resizing) { scroll(currentSection, true) }
 </script>
 
 <div class='carousel-container'>
   {#if scrollable }
     <ProgressIndicator 
-      itemsWidth={itemsWidth}
-      slideDistance={slideDistance}
-      carouselOffset={$carouselOffset} />
+      numberOfSections={numberOfSections}
+      currentSection={currentSection} />
   {/if}
   <div 
     class='album-carousel'
     class:scrollable
     bind:clientWidth={carouselWidth}>
-    {#if $carouselOffset}
+    {#if currentSection > 0}
       <button 
         class='previous-button'
         transition:fade
-        on:click={slideLeft}
+        on:click={previousSection}
       >
         <i class="material-icons">keyboard_arrow_left</i>
       </button>
@@ -66,14 +85,15 @@
         <AlbumTile 
           album={album} 
           selectAlbum={selectAlbum}
-          selected={selectedAlbum == album} />
+          selected={selectedAlbum == album}
+          tileWidth={$tileWidth} />
       {/each}
     </div>
-    {#if $carouselOffset != overflowWidth }
+    {#if currentSection < (numberOfSections - 1) }
       <button 
         class='next-button'
         transition:fade
-        on:click={slideRight}
+        on:click={nextSection}
       >
         <i class="material-icons">keyboard_arrow_right</i>
       </button>
