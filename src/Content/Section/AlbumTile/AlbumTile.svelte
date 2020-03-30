@@ -9,7 +9,7 @@
 
 <div class='tile-container' style='--size:{tileWidth - 20}px'>
   {#if !album.loading && tileWidth}
-    <div 
+    <button 
       transition:fade
       class='album-tile'
       class:selected
@@ -20,7 +20,7 @@
         <h5>{album.title}</h5>
         <h6>{album.author_name}</h6>
       </div>
-    </div>
+    </button>
   {/if}
 </div>
 
@@ -35,13 +35,15 @@
   }
 
   .album-tile {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: var(--size);
     cursor: pointer;
     background-color: var(--color);
+    border: none;
   }
-  
+
   .album-tile::after {
     content: '';
     position: absolute;

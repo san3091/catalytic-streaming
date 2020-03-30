@@ -2,6 +2,7 @@
   import { onMount } from 'svelte'
 
   import Search from './Search/Search.svelte'
+  import QuickPlay from './QuickPlay/QuickPlay.svelte'
   import Section from './Section/Section.svelte'
   import Player from './Player/Player.svelte'
   import { playerOpen } from '../stores.js'
@@ -55,7 +56,9 @@
   const hwhAlbums = (albums) => {
     const albumsCopy = albums.slice(24, 29).map(album => {
       const albumCopy = Object.assign({}, album)
-      albumCopy.color = "#be3e82"
+      // albumCopy.color = "#faf3dd"
+      albumCopy.color = "#ede580"
+      // albumCopy.color = "#be3e82"
       return albumCopy
     })
     return albumsCopy
@@ -86,6 +89,11 @@
 <div class='content'>
   <div class='music-selection'> 
     <Search />
+    <QuickPlay 
+      firstAlbum={albums[1]}
+      lastAlbum={albums[30]}
+      selectAlbum={selectAlbum}
+      selectedAlbum={selectedAlbum || albums[1]} />
     <Section
       headerText='Rotating Selection'
       sectionDescription='Explore a rotating selection of free jazz. Find a new album every day.'

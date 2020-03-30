@@ -47,7 +47,7 @@
 
   const resizeTiles = async (carouselWidth) => {
     resizing = true
-    await tileWidth.set((carouselWidth / 6))
+    await tileWidth.set((carouselWidth / 6), { delay: 200 })
     resizing = false
   }
 
