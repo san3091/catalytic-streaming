@@ -19,7 +19,8 @@
     headerText={headerText}
     sectionDescription={sectionDescription}
     selectAlbum={selectAlbum}
-    selectedAlbum={selectedAlbum} />
+    selectedAlbum={selectedAlbum}
+    rotating={sectionNumber == 0} />
 {/if} 
 
 <style>

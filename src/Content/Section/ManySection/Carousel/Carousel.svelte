@@ -8,6 +8,7 @@
   export let albums
   export let selectAlbum
   export let selectedAlbum
+  export let rotating
 
   let carouselWidth, itemsWidth
   let currentSection = 0
@@ -51,6 +52,7 @@
     resizing = false
   }
 
+  $: rotatingMargin = rotating ? '12px' : '0'
   $: scrollable = itemsWidth > carouselWidth
   $: resizeTiles(carouselWidth)
   $: numberOfSections = calcSections(itemsWidth)
@@ -78,7 +80,11 @@
     {/if}
     <div 
       class='carousel-items' 
-      style='--carousel-offset:{$carouselOffset}px'
+      style='
+        --carousel-offset:{$carouselOffset}px; 
+        --tile-width:{$tileWidth}px; 
+        --rotating-margin:{rotatingMargin}
+      '
       bind:clientWidth={itemsWidth}
     >
       {#each albums as album}
@@ -86,7 +92,8 @@
           album={album} 
           selectAlbum={selectAlbum}
           selected={selectedAlbum == album}
-          tileWidth={$tileWidth} />
+          tileWidth={$tileWidth}
+          rotating={rotating} />
       {/each}
     </div>
     {#if currentSection < (numberOfSections - 1) }
@@ -119,6 +126,7 @@
     display: flex;
     flex-direction: row;
     right: var(--carousel-offset);
+    margin-bottom: var(--rotating-margin);
   }
   
   button {

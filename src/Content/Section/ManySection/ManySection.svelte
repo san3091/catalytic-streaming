@@ -6,6 +6,7 @@
   export let sectionDescription
   export let selectAlbum
   export let selectedAlbum
+  export let rotating
 </script>
 
 <div>
@@ -14,7 +15,8 @@
   <Carousel 
     albums={albums} 
     selectAlbum={selectAlbum} 
-    selectedAlbum={selectedAlbum} />
+    selectedAlbum={selectedAlbum}
+    rotating={rotating} />
 </div>
 
 <style>

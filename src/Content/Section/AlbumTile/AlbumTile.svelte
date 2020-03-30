@@ -5,15 +5,21 @@
   export let selectAlbum
   export let selected
   export let tileWidth
+  export let rotating
+
+  $: loaded = !album.loading
+  $: extraTextVisibility = rotating && loaded ? 'visible' : 'hidden'
 </script>
 
-<div class='tile-container' style='--size:{tileWidth - 20}px'>
+<div 
+  class='tile-container' 
+  style='--size:{tileWidth - 20}px; --visibility:{extraTextVisibility};'>
   {#if !album.loading && tileWidth}
     <button 
       transition:fade
       class='album-tile'
       class:selected
-      style='--color:{album.color || "#666a86"}'
+      style='--color:{album.color || "#666a86"};'
       on:click={ selectAlbum(album) } >
       <img src={album.thumbnail_url} />
       <div class='album-info'>
@@ -32,6 +38,31 @@
     z-index: 1;
     margin: 10px;
     margin-bottom: 15px;
+  }
+
+  .tile-container:first-child::after {
+    visibility: var(--visibility);
+    opacity: 0;
+    content: 'NEW TODAY';
+    position: absolute;
+    bottom: -30px;
+    size: 20px;
+    text-align: center;
+    width: var(--tile-width);
+    animation: fade-in 1s 2s ease-in forwards;
+
+  }
+ 
+  .tile-container:nth-child(30)::after {
+    visibility: var(--visibility);
+    opacity: 0;
+    content: "DON'T MISS";
+    position: absolute;
+    bottom: -30px;
+    size: 20px;
+    text-align: center;
+    width: var(--tile-width);
+    animation: fade-in 1s 2s ease-in forwards;
   }
 
   .album-tile {
@@ -68,6 +99,7 @@
 
   .album-info * {
     color: #dbdedf;
+    text-align: left;
   }
   
   img {
