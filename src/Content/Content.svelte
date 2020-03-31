@@ -87,7 +87,7 @@
 
 <div class='content'>
   <div class='music-selection'> 
-    <Search />
+    <!-- <Search /> -->
     <Section
       headerText='Rotating Selection'
       sectionDescription='Explore a rotating selection of free jazz. Find a new album every day.'
@@ -120,7 +120,7 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 82px);
   }
 
   .music-selection {
