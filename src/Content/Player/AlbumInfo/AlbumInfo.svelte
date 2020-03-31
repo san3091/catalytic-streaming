@@ -1,6 +1,7 @@
 <script>
   import { fade } from 'svelte/transition'
   export let album
+
 </script>
 
 <div class='info-container'>
@@ -28,7 +29,7 @@
 
   .info-content {
     padding: 20px;
-    border: 2px solid #222;
+    border-bottom: 2px solid #3e3e3e;
     background-color: hsl(0, 0%, 100%, 80%);
   }
 

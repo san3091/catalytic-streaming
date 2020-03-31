@@ -76,13 +76,13 @@
   .slide-button {
     position: relative;
     height: 100%;
-    width: 50px;
+    min-width: 50px;
   }
 
   .slide-button i {
     position: absolute;
     left: 0;
-    margin-left: 7px;
+    margin-left: 10px;
   }
 
   .material-icons {

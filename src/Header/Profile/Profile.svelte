@@ -94,7 +94,7 @@
 	}
 
 	h3 {
-		margin: 20px;
+		margin: 20px 20px 30px;
 	}
 
 	a {
