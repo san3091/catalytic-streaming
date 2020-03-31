@@ -16,15 +16,16 @@
   let carouselOffset = tweened(0, { easing: cubicOut })
   let tileWidth = tweened(0, { easing: cubicOut, duration: 400 })
 
-  const scroll = (currentSection, widthChange=false) => {
+  const scroll = (section, widthChange=false) => {
     if (scrollable) {
-      const newScrollPosition = currentSection * carouselWidth
+      const newScrollPosition = section * carouselWidth
       
       if ((newScrollPosition + carouselWidth) > itemsWidth) {
           carouselOffset.set(itemsWidth - carouselWidth)
       } else {
-        carouselOffset.set(currentSection * carouselWidth)
+        carouselOffset.set(section * carouselWidth)
       }
+      currentSection = section
     }
   }
 
@@ -63,7 +64,8 @@
   {#if scrollable }
     <ProgressIndicator 
       numberOfSections={numberOfSections}
-      currentSection={currentSection} />
+      currentSection={currentSection}
+      scroll={scroll} />
   {/if}
   <div 
     class='album-carousel'
