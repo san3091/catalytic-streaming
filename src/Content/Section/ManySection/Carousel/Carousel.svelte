@@ -16,8 +16,12 @@
   let carouselOffset = tweened(0, { easing: cubicOut })
   let tileWidth = tweened(0, { easing: cubicOut, duration: 400 })
 
-  const scroll = (section, widthChange=false) => {
+  const scroll = (section) => {
     if (scrollable) {
+      const lastSection = numberOfSections - 1
+      
+      if (section > lastSection) { section = lastSection }
+
       const newScrollPosition = section * carouselWidth
       
       if ((newScrollPosition + carouselWidth) > itemsWidth) {
@@ -49,15 +53,16 @@
 
   const resizeTiles = async (carouselWidth) => {
     resizing = true
-    await tileWidth.set((carouselWidth / 6), { delay: 200 })
+    await tileWidth.set((carouselWidth / tilesPerScroll))
     resizing = false
   }
 
+  $: tilesPerScroll = (carouselWidth > 1100) ? 6 : 5
   $: rotatingMargin = rotating ? '12px' : '0'
   $: scrollable = itemsWidth > carouselWidth
   $: resizeTiles(carouselWidth)
   $: numberOfSections = calcSections(itemsWidth)
-  $: if (carouselWidth || resizing) { scroll(currentSection, true) }
+  $: if (carouselWidth || resizing) { scroll(currentSection) }
 </script>
 
 <div class='carousel-container'>

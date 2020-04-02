@@ -9,11 +9,16 @@
 
   $: loaded = !album.loading
   $: extraTextVisibility = rotating && loaded ? 'visible' : 'hidden'
+  $: padding = (tileWidth > 180) ? 10 : 5
 </script>
 
 <div 
   class='tile-container' 
-  style='--size:{tileWidth - 20}px; --visibility:{extraTextVisibility};'>
+  style='
+    --size:{tileWidth - (padding * 2)}px; 
+    --visibility:{extraTextVisibility};
+    --padding:{padding}
+  ' >
   {#if !album.loading && tileWidth}
     <button 
       transition:fade
@@ -33,10 +38,12 @@
 
 <style>
   .tile-container {
+    box-sizing: border-box;
+     width: var(--tile-width);
     position: relative;
     display: flex;
     z-index: 1;
-    margin: 10px;
+    padding: var(--padding);
     margin-bottom: 15px;
   }
 
@@ -69,7 +76,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: var(--size);
     cursor: pointer;
     background-color: var(--color);
     border: none;
@@ -92,13 +98,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
+    flex-grow: 1;
+    width: var(--size);
+    box-sizing: border-box;
     padding: 10px;
     background-color: hsl(0, 0%, 0%, 50%);
   }
 
   .album-info * {
-    color: #dbdedf;
     text-align: left;
   }
   

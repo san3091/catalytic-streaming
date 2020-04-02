@@ -7,9 +7,12 @@
   export let selectAlbum
   export let selectedAlbum
   export let rotating
+
+  let width
+  $: padding = (width > 1300) ? '100px' : '50px'
 </script>
 
-<div>
+<div bind:clientWidth={width} style='--padding:{padding}' >
   <h2>{headerText}</h2>
   <p>{sectionDescription}</p>
   <Carousel 
@@ -27,9 +30,7 @@
 
   div {
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
     width: 100%;
-    padding: 0 100px;
+    padding: 0 var(--padding);
   }
 </style>

@@ -50,14 +50,17 @@
     min-width: var(--width);
     max-width: var(--width);
     border-left: 1px solid #3e3e3e;
-    overflow-y: scroll;
   }
 
   .player-content {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+
     width: 100%;
-    margin: 100px 50px 0 0;
+    margin: 50px 0;
+    padding: 25px 50px 0 0;
   }
 
   button, button:active {

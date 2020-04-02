@@ -19,7 +19,7 @@
 </script>
 
 <button on:click={() => {open=true}}>
-	<h5>Connect with </h5>
+	<h4>Connect with </h4>
 	<img class='patreon-wordmark' src='/Patreon_Wordmark_Black.png' />
 </button>
 <div class:open class='modal-container'>
@@ -30,7 +30,7 @@
 		{#if !loading}
 			<h3>Sign in or become a patron to access more free jazz.</h3>
 			<a class='sign-in-button' href={patreonUrl}>
-				<h5>Sign in with </h5>
+				<h4>Sign in with </h4>
 				<img class='patreon-wordmark' src='/Patreon_Wordmark_Black.png' />
 			</a>
 			<a 
@@ -48,18 +48,14 @@
 	button { 
 		display: flex;
 		flex-direction: row;
+		width: 250px;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		padding: 10px;
 		cursor: pointer;
 		background-color: hsl(0, 0%, 100%, 80%);
 		margin: 10px;
 		border: 1px solid #3e3e3e;
-		/* border: 1px solid #f96854; */
-	}
-
-	h6 {
-		margin: 0 10px 0;
 	}
 	
 	.patreon-wordmark {
@@ -94,7 +90,7 @@
 	}
 
 	h3 {
-		margin: 20px 20px 30px;
+		margin: 20px;
 	}
 
 	a {
@@ -125,6 +121,7 @@
 
 	.close-button {
 		position: absolute;
+		width: 30px;
 		top: 20px;
 		right: 20px;
 		padding: 0;
