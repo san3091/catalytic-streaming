@@ -46,7 +46,7 @@
 		background-color: #f96854;
 		padding: 0px;
 	}
-	
+
 	@media screen and (max-width: 1300px) {
 		:global(p) {
 			font-size: 14px;

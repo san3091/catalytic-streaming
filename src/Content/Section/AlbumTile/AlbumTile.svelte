@@ -39,7 +39,7 @@
 <style>
   .tile-container {
     box-sizing: border-box;
-     width: var(--tile-width);
+    width: var(--tile-width);
     position: relative;
     display: flex;
     z-index: 1;
