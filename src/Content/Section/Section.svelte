@@ -72,8 +72,8 @@
   }
 
   .button-container {
-    position: relative;
     padding-top: 45px;
+    margin-right: 50px;
   }
 
   .play-last-button {
