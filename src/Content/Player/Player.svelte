@@ -10,12 +10,19 @@
   export let selectedAlbum
 
   let width = tweened(50, { easing: cubicOut, duration: 400 })
-
+  let isClosed = false
+  
   const toggleOpen = () => {
     playerOpen.set(!$playerOpen)
   }
 
+  const close = () => {
+    playerOpen.set(false)
+    isClosed = true
+  }
+
   $: $playerOpen ? width.set(500) : width.set(50)
+  $: if ($playerOpen) { isClosed = false }
 </script>
 
 <div class='player' style='--width:{$width}px'>
@@ -30,9 +37,11 @@
     <button 
       transition:fade
       class='close-button' 
-      on:click={toggleOpen}>
+      on:click={close}>
       <i class="material-icons">close</i>
     </button>
+  {/if}
+  {#if !isClosed}
     <div transition:fade class='player-content'>
       <AlbumInfo album={selectedAlbum} />
       <SoundCloudPlayer selectedAlbum={selectedAlbum} />
