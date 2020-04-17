@@ -28,7 +28,7 @@
   .progress-indicator {
     position: absolute;
     right: 0;
-    top: -20px;
+    top: -25px;
     height: 20px;
     width: var(--width);
   }

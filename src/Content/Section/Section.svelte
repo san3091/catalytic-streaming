@@ -37,7 +37,9 @@
             class='play-last-button' 
             class:selected
             on:click={playLastAlbum}>
-            <b>DON'T MISS:</b>{lastAlbum.title}
+            <h6>
+              <b>DON'T MISS:</b>{lastAlbum.title}
+            </h6>
           </button>
         </div>
       {/if}
@@ -69,11 +71,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
   }
 
   .button-container {
-    padding-top: 45px;
-    margin-right: 50px;
+    padding-bottom: 40px;
+    margin-right: 20px;
   }
 
   .play-last-button {

@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte'
-
   import Search from './Search/Search.svelte'
   import Section from './Section/Section.svelte'
   import Player from './Player/Player.svelte'
