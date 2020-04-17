@@ -18,8 +18,8 @@
     width: 100%;
     display: flex;
     z-index: 3;
-    /* border-bottom: 1px solid #f96854; */
-    border-bottom: 1px solid #3e3e3e;
+    border-bottom: 1px solid #f96854;
+    /* border-bottom: 1px solid #3e3e3e; */
   }
 
   .header-content {

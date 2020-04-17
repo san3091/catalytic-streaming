@@ -45,6 +45,9 @@
 </div>
 
 <style>
+	* {
+		color: #3e3e3e;
+	}
 	button { 
 		display: flex;
 		flex-direction: row;
@@ -77,7 +80,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: rgba(249, 104, 84, 0.9);
+		/* background-color: rgba(249, 104, 84, 0.9); */
+		background-color: rgba(62, 62, 62, 0.9);
 	}
 
 	.patreon-modal {
@@ -132,4 +136,8 @@
 	.material-icons {
     font-size: 28px;
   }
+
+	h4 {
+		color: #3e3e3e;
+	}
 </style>

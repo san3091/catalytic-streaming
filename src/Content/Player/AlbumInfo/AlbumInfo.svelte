@@ -22,6 +22,9 @@
 </div>
 
 <style>
+  * {
+    color: #3e3e3e;
+  }
   .info-container {
     width: 100%;
     margin-bottom: 50px;
@@ -29,7 +32,8 @@
 
   .info-content {
     padding: 20px;
-    border-bottom: 2px solid #3e3e3e;
+    /* border-bottom: 2px solid #3e3e3e; */
+    border-bottom: 2px solid #f96854;
     background-color: hsl(0, 0%, 100%, 80%);
   }
 
